@@ -1,0 +1,9 @@
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\bin\Debug\MY_DAL.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\bin\Debug\MY_DAL.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\bin\Debug\MY_BE.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\bin\Debug\MY_BE.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\obj\Debug\MY_DAL.csprojAssemblyReference.cache
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\obj\Debug\MY_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\obj\Debug\MY_DAL.csproj.CopyComplete
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\obj\Debug\MY_DAL.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_DAL\obj\Debug\MY_DAL.pdb

@@ -1,0 +1,14 @@
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_UI_CONSOLE.exe.config
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_UI_CONSOLE.exe
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_UI_CONSOLE.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_BE.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_BL.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_DAL.dll
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_BE.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_BL.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\bin\Debug\MY_DAL.pdb
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csprojAssemblyReference.cache
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csproj.CoreCompileInputs.cache
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csproj.CopyComplete
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.exe
+C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.pdb
