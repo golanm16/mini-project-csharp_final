@@ -22,7 +22,7 @@ namespace MY_BE
         int DrivingLessonsNumber;
         public string ToString()
         {
-            return "";
+            return "hi my name is";
         }
     }
 }
