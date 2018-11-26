@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MY_DAL
 {
-   interface Idal
-    {
-        bool AddTester();
-    }
+    public interface Idal
+    {//פונקציות בוליאניות בשביל לבדוק שההכנסה עבדה
+        bool addTester(MY_BE.Tester tester);
+    } 
 }
