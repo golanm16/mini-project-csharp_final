@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal_imp.cs" />
     <Compile Include="MY_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{3acb6d97-003a-40eb-b58e-fd22bacb021b}</Project>
+      <Name>DS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MY_BE\MY_BE.csproj">
       <Project>{2b0765ac-8f95-4e04-beb2-885a2acee21e}</Project>
       <Name>MY_BE</Name>

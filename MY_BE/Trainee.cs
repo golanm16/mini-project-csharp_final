@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace MY_BE
 {
-    class Trainee
+    public class Trainee
     {
-        int id;
-        string FamilyName;
-        string PrivateName;
-        DateTime BirthDate;
-        Gender TraineeGender;
-        string PhoneNumber;
-        Adress TraineeAdress;
-        VehicleType TraineeVahicle;
-        GearBox TraineeGearbox;
-        string DrivingSchool;
-        string TeacherName;
-        int DrivingLessonsNumber;
+        public int id;
+        public string FamilyName;
+        public string PrivateName;
+        public DateTime BirthDate;
+        public Gender TraineeGender;
+        public string PhoneNumber;
+        public Adress TraineeAdress;
+        public VehicleType TraineeVahicle;
+        public GearBox TraineeGearbox;
+        public string DrivingSchool;
+        public string TeacherName;
+        public int DrivingLessonsNumber;
         public string ToString()
         {
             return "";
