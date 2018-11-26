@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MY_DAL
 {
-    public class MyDal
+   interface Idal
     {
-        public string getValue()
-        {
-            return "dal send this value";
-        }
+        bool AddTester();
     }
 }

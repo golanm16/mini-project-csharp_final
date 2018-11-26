@@ -12,3 +12,7 @@ C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.
 C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csproj.CopyComplete
 C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.exe
 C:\Users\Golan\source\repos\ClassLibrary1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.pdb
+C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csprojAssemblyReference.cache
+C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.csproj.CoreCompileInputs.cache
+C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.exe
+C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_UI_CONSOLE\obj\Debug\MY_UI_CONSOLE.pdb
