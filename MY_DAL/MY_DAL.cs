@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MY_DAL
 {
-    public class MyDal
-    {
-        public string getValue()
-        {
-            return "dal send this value";
-        }
-    }
+    public interface Idal
+    {//פונקציות בוליאניות בשביל לבדוק שההכנסה עבדה
+        bool AddTester(Tester);
+    } 
 }
