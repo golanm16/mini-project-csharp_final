@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace MY_DAL
 {
-    class Dal_imp
+    public class Dal_imp
     {
-        void addTester(MY_BE.Tester tester)
+        static int testid=0;
+        public void addTester(MY_BE.Tester tester)
         {
             DS.DataSource.testersList.Add(tester);
         }
-        void removeTester(MY_BE.Tester tester)
+        public void removeTester(MY_BE.Tester tester)
         {
             DS.DataSource.testersList.Remove(tester);
         }
-        void updateTester(MY_BE.Tester tester)
+        public void updateTester(MY_BE.Tester tester)
         {
             foreach(MY_BE.Tester item in DS.DataSource.testersList)
             {
@@ -28,15 +29,15 @@ namespace MY_DAL
                 }
             }
         }
-        void addTrainees(MY_BE.Trainee trainee)
+        public void addTrainees(MY_BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Add(trainee);
         }
-        void removeTrainees(MY_BE.Trainee trainee)
+        public void removeTrainees(MY_BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Remove(trainee);
         }
-        void updateTrainees(MY_BE.Trainee trainee)
+        public void updateTrainees(MY_BE.Trainee trainee)
         {
             foreach (MY_BE.Trainee item in DS.DataSource.traineesList)
             {
@@ -48,12 +49,13 @@ namespace MY_DAL
                 }
             }
         }
-        void addTest(MY_BE.Test test)
+
+        public void addTest(MY_BE.Test test)
         {
-            test
+            test.TestNumber = testid++;
             DS.DataSource.testsList.Add(test);
         }
-        void updateTestOnFinish(MY_BE.Test test)
+        public void updateTestOnFinish(MY_BE.Test test)
         {
             foreach(MY_BE.Test item in DS.DataSource.testsList)
             {
@@ -65,15 +67,15 @@ namespace MY_DAL
                 }
             }
         }
-        List<MY_BE.Tester> getAllTesters()
+        public List<MY_BE.Tester> getAllTesters()
         {
             return DS.DataSource.testersList;
         }
-        List<MY_BE.Trainee> getAllTrainees()
+        public List<MY_BE.Trainee> getAllTrainees()
         {
             return DS.DataSource.traineesList;
         }
-        List<MY_BE.Test> getAllTests()
+        public List<MY_BE.Test> getAllTests()
         {
             return DS.DataSource.testsList;
         }
