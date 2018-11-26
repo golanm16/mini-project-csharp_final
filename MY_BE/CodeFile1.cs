@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MY_BE
 {
-    enum VehicleType{ PrivateVehicle, TwoWheelVehicle ,MediumTruck,HeavyTruck};
-    enum GearBox { Automatic,Manual};
-    enum Gender { Male,Female,Other};
+    public enum VehicleType{ PrivateVehicle, TwoWheelVehicle ,MediumTruck,HeavyTruck};
+    public enum GearBox { Automatic,Manual};
+    public enum Gender { Male,Female,Other};
 }

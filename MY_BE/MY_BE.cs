@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MY_BE
 {
-    struct Adress{
+    public struct Adress{
         string Street;
         int HouseNumber;
         string City;

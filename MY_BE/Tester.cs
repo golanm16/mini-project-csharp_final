@@ -8,16 +8,16 @@ namespace MY_BE
 {
     public class Tester
     {
-        int id;
-        string FamilyName;
-        string PrivateName;
-        DateTime BirthDate;
-        Gender TesterGender;
-        string PhoneNumber;
-        Adress TesterAdress;
-        int Seniority;
-        int MaxWeeklyTests;     //maybe const?
-        VehicleType TesterVehicle;
+        public int id;
+        public string FamilyName;
+        public string PrivateName;
+        public DateTime BirthDate;
+        public Gender TesterGender;
+        public string PhoneNumber;
+        public Adress TesterAdress;
+        public int Seniority;
+        public int MaxWeeklyTests;     //maybe const?
+        public VehicleType TesterVehicle;
         //bool mat for work days in the week and hours
         int MaxDistance;
         public string ToString()
