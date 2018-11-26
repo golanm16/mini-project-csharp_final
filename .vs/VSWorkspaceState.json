@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MY_BE",
+    "\\MY_UI_CONSOLE"
   ],
+  "SelectedNode": "\\MY_UI_CONSOLE\\MY_UI_CONSOLE.cs",
   "PreviewInSolutionExplorer": false
 }
