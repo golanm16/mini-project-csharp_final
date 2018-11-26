@@ -8,6 +8,6 @@ namespace MY_DAL
 {
     public interface Idal
     {//פונקציות בוליאניות בשביל לבדוק שההכנסה עבדה
-        bool AddTester(Tester);
+        bool addTester(MY_BE.Tester tester);
     } 
 }
