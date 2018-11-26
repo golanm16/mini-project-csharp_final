@@ -8,14 +8,7 @@ namespace MY_BE
 {
     public class Test
     {
-        public int _TestNumber=0;
-        public string TestNumber
-        {
-            get { 
-                _TestNumber++;
-                _TestNumber.ToString("D8");
-                }
-        }
+        public int TestNumber;
         public string TesterId;
         public string TraineeId;
         public DateTime TestDate;

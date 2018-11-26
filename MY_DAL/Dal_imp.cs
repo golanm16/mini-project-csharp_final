@@ -50,6 +50,7 @@ namespace MY_DAL
         }
         void addTest(MY_BE.Test test)
         {
+            test
             DS.DataSource.testsList.Add(test);
         }
         void updateTestOnFinish(MY_BE.Test test)
