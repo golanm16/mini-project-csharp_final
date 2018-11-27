@@ -14,7 +14,7 @@ namespace MY_BL
             int currentYear = int.Parse(DateTime.Now.Year.ToString());
             if (currentYear - testerBirthYear > 40)
             {
-                MY_DAL.Dal_imp.addTester(tester);
+                MY_DAL.Dal_imp.addTester(tester);//made something
             }
         }
         void removeTester(MY_BE.Tester tester)
