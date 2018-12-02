@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace MY_BE
 {
-    class Configuration
+    public class Configuration
     {
-        static int MAX_TESTER_AGE;
-        static int MIN_CLASS_NUM;
-        static int MIN_TRAINEE_AGE;
-        static int TEST_TO_TEST_TIME_RANGE;
+        public static int MAX_TESTER_AGE;
+        public static int MIN_CLASS_NUM;
+        public static int MIN_TRAINEE_AGE;
+        public static int TEST_TO_TEST_TIME_RANGE;
+        public static int TEST_ID_START;
 
     }
 }

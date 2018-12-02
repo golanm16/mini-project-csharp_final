@@ -8,6 +8,10 @@ namespace MY_BE
 {
     public class Trainee
     {
+        public Trainee()
+        {
+            TestDay = DateTime.MinValue;
+        }
         public int id;
         public string FamilyName;
         public string PrivateName;
@@ -20,6 +24,7 @@ namespace MY_BE
         public string DrivingSchool;
         public string TeacherName;
         public int DrivingLessonsNumber;
+        public DateTime TestDay;
         public string ToString()
         {
             return "";

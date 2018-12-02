@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace MY_DAL
 {
-    public class Dal_imp
+    public class Dal_imp:Idal
     {
-        static int testid=0;
+        public int testid=MY_BE.Configuration.TEST_ID_START;
         public void addTester(MY_BE.Tester tester)
         {
             DS.DataSource.testersList.Add(tester);
@@ -29,15 +28,15 @@ namespace MY_DAL
                 }
             }
         }
-        public void addTrainees(MY_BE.Trainee trainee)
+        public void addTrainee(MY_BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Add(trainee);
         }
-        public void removeTrainees(MY_BE.Trainee trainee)
+        public void removeTrainee(MY_BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Remove(trainee);
         }
-        public void updateTrainees(MY_BE.Trainee trainee)
+        public void updateTrainee(MY_BE.Trainee trainee)
         {
             foreach (MY_BE.Trainee item in DS.DataSource.traineesList)
             {
@@ -49,7 +48,7 @@ namespace MY_DAL
                 }
             }
         }
-
+         
         public void addTest(MY_BE.Test test)
         {
             test.TestNumber = testid++;

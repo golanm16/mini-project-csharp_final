@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace MY_BE
 {
+    
     public class Test
     {
         public int TestNumber;
-        public string TesterId;
-        public string TraineeId;
+        public int TesterId;
+        public int TraineeId;
         public DateTime TestDate;
         public DateTime TestDateTime;
         public Adress TestAdress;
