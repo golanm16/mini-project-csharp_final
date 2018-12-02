@@ -8,7 +8,7 @@ namespace MY_BE
 {
     public class Tester
     {
-        public int id;
+        public int id { get; set; }
         public string FamilyName;
         public string PrivateName;
         public DateTime BirthDate;
