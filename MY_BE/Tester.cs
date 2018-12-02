@@ -42,7 +42,7 @@ namespace MY_BE
             }
         }*/
         bool[,] week;
-        int currentWeeklyTests;
+        public int currentWeeklyTests;
         Schedule()
         {
             week = new bool[7, 6];
@@ -81,9 +81,8 @@ namespace MY_BE
         public int Seniority { get; set; }
         public int MaxWeeklyTests { get; set; }   //maybe const?
         public VehicleType TesterVehicle { get; set; }
-        int MaxDistance { get; set; }
-        //bool mat for work days in the week and hours
-        Schedule weekly ;
+        public int MaxDistance { get; set; }
+        public Schedule weekdays;
         public string ToString()
         {
             return "";

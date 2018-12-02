@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using MY_BE;
+using MY_BE;
+using MY_DAL;
 namespace MY_BL
 {
     public class Bl_imp:IBL
     {
-        
+        Idal d = new Dal_imp();
         public void addTester(MY_BE.Tester tester)
         {
-            int testerBirthYear = int.Parse(tester.BirthDate.Year.ToString());
-            int currentYear = int.Parse(DateTime.Now.Year.ToString());
-            if (currentYear - testerBirthYear > 40)
+            DateTime today = DateTime.Today;
+            int age = today.Year - tester.BirthDate.Year;
+            if (tester.BirthDate > today.AddYears(-1*age))
             {
-               MY_DAL.
+                age--;
+            }
+            if (age>=40)
+            {
+                d.addTester(tester);
             }
             else throw new Exception("tried to insert tester younger than 40");
         }
@@ -33,7 +38,7 @@ namespace MY_BL
             int currentYear = int.Parse(DateTime.Now.Year.ToString());
             if (currentYear - traineeBirthYear > 18)
             {
-                MY_DAL.Dal_imp.addTrainees(trainee);
+                d.addTrainee(trainee);
             }
             else throw new Exception("tried to insert trainee younger than 18");
         }
@@ -66,11 +71,14 @@ namespace MY_BL
             }
             foreach(var item in getAllTesters())
             {
-                if(item.MaxWeeklyTests>currentWeeklyTests)
+                if (item.MaxWeeklyTests <= item.weekdays.currentWeeklyTests)
+                {
+                    canDoTest = false;
+                }
             }
             if (canDoTest)
             {
-                MY_DAL.Dal_imp.addTest(test);
+                d.addTest(test);
             }
         }
         public void updateTestOnFinish(MY_BE.Test test)
@@ -79,15 +87,15 @@ namespace MY_BL
         }
         public List<MY_BE.Tester> getAllTesters()
         {
-            return MY_DAL.Dal_imp.getAllTesters();
+            return d.getAllTesters();
         }
         public List<MY_BE.Trainee> getAllTrainees()
         {
-            return MY_DAL.Dal_imp.getAllTrainees();
+            return d.getAllTrainees();
         }
         public List<MY_BE.Test> getAllTests()
         {
-            return MY_DAL.Dal_imp.getAllTests();
+            return d.getAllTests();
         }
     
     }
