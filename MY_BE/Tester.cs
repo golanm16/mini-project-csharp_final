@@ -82,7 +82,7 @@ namespace MY_BE
         public int MaxWeeklyTests { get; set; }   //maybe const?
         public VehicleType TesterVehicle { get; set; }
         public int MaxDistance { get; set; }
-        public Schedule weekdays;
+        public Schedule weekdays { get; set; }
         public string ToString()
         {
             return "";

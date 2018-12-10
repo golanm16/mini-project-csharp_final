@@ -54,23 +54,23 @@ namespace MY_BL
         {
 
             bool canDoTest = true;
-            // Trainee newTrainee = new Trainee(); // בשביל הבדיקה השנייה שהייתי צריך לעשות
-            foreach (var item in getAllTrainees())
+            Trainee newTrainee = new Trainee(); // בשביל הבדיקה השנייה שהייתי צריך לעשות
+            foreach (var item in getAllTrainees())//check if trainee is valid for test
             {
 
                 if (item.id == test.TraineeId)
                 {
-                    /*newTrainee = item;// בשביל הבדיקה הראשונה שהייתי צריך לעשות
+                    newTrainee = item;// בשביל הבדיקה הראשונה שהייתי צריך לעשות
                     if (item.TraineeVahicle!=test.TraineeVahicle)
                     {
                         canDoTest = false;
                         throw new Exception("The Trainee is tested on other vehicles");
                     }
-                    else if (item.TraineeVahicle == test.TraineeVahicle&& item.pastTheTest==true)
+                    else if (item.TraineeVahicle == test.TraineeVahicle && item.pastTheTest==true)
                     {
                         canDoTest = false;
                         throw new Exception("The Trainee has already passed the test");
-                    }*/
+                    }
                     if ((test.TestDateTime - item.TestDay).TotalDays <= 7)
                     {
                         canDoTest = false;
@@ -83,7 +83,7 @@ namespace MY_BL
                 }
 
             }
-            foreach (var item in getAllTesters())
+            foreach (var item in getAllTesters())//look for available tester
             {
                 if (!item.weekdays[test.TestDateTime.DayOfWeek, (int)test.TestDateTime.Hour])
                 {
@@ -93,11 +93,16 @@ namespace MY_BL
                 {
                     canDoTest = false;
                 }
-                /*  if (newTrainee.TraineeVahicle!=item.TesterVehicle)// בשביל הבדיקה השנייה שהייתי צריך לעשות
-                  {
-                      canDoTest = false;
-                      throw new Exception("The tester can test on another type of vehicle");
-                  }*/
+                if (newTrainee.TraineeVahicle!=item.TesterVehicle)// בשביל הבדיקה השנייה שהייתי צריך לעשות
+                {
+                    canDoTest = false;
+                    throw new Exception("The tester can test on another type of vehicle");
+                }
+                if (canDoTest)//if the tester is available for testing assign the tester for the test
+                {
+                    test.TesterId = item.id;
+                    break;
+                }
             }
 
             if (canDoTest)
@@ -107,7 +112,18 @@ namespace MY_BL
         }
         public void updateTestOnFinish(MY_BE.Test test)
         {
-
+            bool canupdatetest = true;
+            foreach(var item in test.TestParams)//check if all testparams was entered false\true.
+            {
+                if (item.Key == null)
+                {
+                    canupdatetest = false;
+                }
+            }
+            if (canupdatetest)
+            {
+                d.updateTestOnFinish(test);
+            }
         }
         public List<MY_BE.Tester> getAllTesters()
         {
