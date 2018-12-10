@@ -25,6 +25,7 @@ namespace MY_BE
         public string TeacherName;
         public int DrivingLessonsNumber;
         public DateTime TestDay;
+        public bool pastTheTest;
         public string ToString()
         {
             return "";

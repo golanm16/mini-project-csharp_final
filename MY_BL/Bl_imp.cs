@@ -53,29 +53,53 @@ namespace MY_BL
         public void addTest(MY_BE.Test test)
         {
 
-            bool canDoTest=true;
-            foreach(var item in getAllTrainees())
+            bool canDoTest = true;
+            // Trainee newTrainee = new Trainee(); // בשביל הבדיקה השנייה שהייתי צריך לעשות
+            foreach (var item in getAllTrainees())
             {
+
                 if (item.id == test.TraineeId)
                 {
-                    if ((test.TestDateTime-item.TestDay).TotalDays<=7)
+                    /*newTrainee = item;// בשביל הבדיקה הראשונה שהייתי צריך לעשות
+                    if (item.TraineeVahicle!=test.TraineeVahicle)
+                    {
+                        canDoTest = false;
+                        throw new Exception("The Trainee is tested on other vehicles");
+                    }
+                    else if (item.TraineeVahicle == test.TraineeVahicle&& item.pastTheTest==true)
+                    {
+                        canDoTest = false;
+                        throw new Exception("The Trainee has already passed the test");
+                    }*/
+                    if ((test.TestDateTime - item.TestDay).TotalDays <= 7)
                     {
                         canDoTest = false;
                     }
-                    if(item.DrivingLessonsNumber<20)
+                    if (item.DrivingLessonsNumber < 20)
                     {
                         canDoTest = false;
                     }
                     break;
                 }
+
             }
-            foreach(var item in getAllTesters())
+            foreach (var item in getAllTesters())
             {
+                if (!item.weekdays[test.TestDateTime.DayOfWeek, (int)test.TestDateTime.Hour])
+                {
+                    canDoTest = false;
+                }
                 if (item.MaxWeeklyTests <= item.weekdays.currentWeeklyTests)
                 {
                     canDoTest = false;
                 }
+                /*  if (newTrainee.TraineeVahicle!=item.TesterVehicle)// בשביל הבדיקה השנייה שהייתי צריך לעשות
+                  {
+                      canDoTest = false;
+                      throw new Exception("The tester can test on another type of vehicle");
+                  }*/
             }
+
             if (canDoTest)
             {
                 d.addTest(test);
