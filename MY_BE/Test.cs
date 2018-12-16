@@ -21,11 +21,23 @@ namespace MY_BE
             //TestParams.Add("", null);
             //TestParams.Add("", null);
         }
-        public VehicleType TraineeVahicle { get; set; }// בשביל הבדיקה הראשונה שהייתי צריך לעשות
+        public Test(Test copyTest)
+        {
+            TestNumber = copyTest.TestNumber;
+            TesterId = copyTest.TesterId;
+            TraineeId = copyTest.TraineeId;
+            TestDate = copyTest.TestDate;
+            TestDateTime = copyTest.TestDateTime;
+            TraineeVehicle = copyTest.TraineeVehicle;
+            TestAdress = copyTest.TestAdress;
+            TesterNote = copyTest.TesterNote;
+            TestParams = copyTest.TestParams;
+        }
+        public VehicleType TraineeVehicle { get; set; }// בשביל הבדיקה הראשונה שהייתי צריך לעשות
         public int TestNumber { get; set; }
         public int TesterId { get; set; }
         public int TraineeId { get; set; }
-        public DateTime TestDate { get; set; }
+        public DateTime TestDate { get; set; }//לכאורה מיותר רצח!
         public DateTime TestDateTime { get; set; }
         public Adress TestAdress { get; set; }
         public Dictionary<string,bool?> TestParams { get; set; }//make a lot of those!

@@ -43,7 +43,7 @@ namespace MY_BE
         }*/
         bool[,] week;
         public int currentWeeklyTests;
-        Schedule()
+        public Schedule()
         {
             week = new bool[7, 6];
             for(int i = 0; i < 7; i++)
@@ -54,6 +54,11 @@ namespace MY_BE
                 }
             }
             currentWeeklyTests = 0;
+        }
+        public Schedule(Schedule s)
+        {
+            currentWeeklyTests = s.currentWeeklyTests;
+            week = s.week;
         }
         public bool this[DayOfWeek dof, int h]
         {
@@ -66,11 +71,40 @@ namespace MY_BE
                 week[(int)dof, h - 9]=value;
             }
         }
-        
-        
+        /*public IEnumerator<bool> GetEnumerator()
+        {
+            
+            for(DayOfWeek a = DayOfWeek.Sunday; a <= DayOfWeek.Saturday; a++)
+            {
+                for(int i=9;i<=15 ;i++)
+                {
+                    yield return 
+                }
+            }
+        }*/
+
     }
         public class Tester
     {
+        public Tester()
+        {
+
+        }
+        public Tester(Tester tester)
+        {
+            id = tester.id;
+            FamilyName = tester.FamilyName;
+            PrivateName = tester.PrivateName;
+            BirthDate = tester.BirthDate;
+            TesterGender = tester.TesterGender;
+            PhoneNumber = tester.PhoneNumber;
+            TesterAdress = tester.TesterAdress;
+            Seniority = tester.Seniority;
+            MaxWeeklyTests = tester.MaxWeeklyTests;
+            TesterVehicle = tester.TesterVehicle;
+            MaxDistance = tester.MaxDistance;
+            weekdays = tester.weekdays;
+        }
         public int id { get; set; }
         public string FamilyName { get; set; }
         public string PrivateName { get; set; }
@@ -86,6 +120,19 @@ namespace MY_BE
         public string ToString()
         {
             return "";
+        }
+        public void nextAvailableTest()
+        {
+            for (DayOfWeek a = DateTime.Today.DayOfWeek; a <= DayOfWeek.Saturday; a++)
+            {
+                for (int i = 9; i <= 15; i++)
+                {
+                    if (weekdays[a, i])
+                    {
+                        throw new Exception("next test available in: " + a + " " + i+":00");
+                    }
+                }
+            }
         }
     }
 }

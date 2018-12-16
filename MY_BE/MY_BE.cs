@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace MY_BE
 {
     public struct Adress{
+        string City;
         string Street;
         int HouseNumber;
-        string City;
     }
     public class MyBe
     {

@@ -69,14 +69,14 @@ namespace MY_DAL
         public List<MY_BE.Tester> getAllTesters()
         {
             return DS.DataSource.testersList;
-        }    //need to return a copy. not areference that can change the source
+        }    //**need to return a copy. not areference that can change the source
         public List<MY_BE.Trainee> getAllTrainees()
         {
             return DS.DataSource.traineesList;
-        }  //need to return a copy. not areference that can change the source
+        }  //**need to return a copy. not areference that can change the source
         public List<MY_BE.Test> getAllTests()
         {
             return DS.DataSource.testsList;
-        }        //need to return a copy. not areference that can change the source
+        }        //**need to return a copy. not areference that can change the source
     }
 }
