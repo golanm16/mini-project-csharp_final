@@ -26,7 +26,15 @@ namespace MY_BL
         }
         public void removeTester(MY_BE.Tester tester)
         {
-
+            bool tester_exists = false;
+            foreach(Tester item in getAllTesters())
+            {
+                if (item.id == tester.id)
+                {
+                    tester_exists = true;
+                    d.removeTester(tester);
+                }
+            }
         }
         public void updateTester(MY_BE.Tester tester)
         {

@@ -29,20 +29,20 @@ namespace MY_BE
             TestDay = trainee.TestDay;
             passedTheTest = trainee.passedTheTest;
         }//copy constructor
-        public int id;
-        public string FamilyName;
-        public string PrivateName;
-        public DateTime BirthDate;
-        public Gender TraineeGender;
-        public string PhoneNumber;
-        public Adress TraineeAdress;
-        public VehicleType TraineeVehicle;
-        public GearBox TraineeGearbox;
-        public string DrivingSchool;
-        public string TeacherName;
-        public int DrivingLessonsNumber;
-        public DateTime TestDay;
-        public bool passedTheTest;
+        public int id { get; set; }
+        public string FamilyName { get; set; }
+        public string PrivateName { get; set; }
+        public DateTime BirthDate { get; set; }
+        public Gender TraineeGender { get; set; }
+        public string PhoneNumber { get; set; }
+        public Adress TraineeAdress { get; set; }
+        public VehicleType TraineeVehicle { get; set; }
+        public GearBox TraineeGearbox { get; set; }
+        public string DrivingSchool { get; set; }
+        public string TeacherName { get; set; }
+        public int DrivingLessonsNumber { get; set; }
+        public DateTime TestDay { get; set; }
+        public bool passedTheTest { get; set; }
         public string ToString()
         {
             return "";
