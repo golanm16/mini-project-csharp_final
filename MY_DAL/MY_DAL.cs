@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MY_DAL
 {
     public interface Idal
-    {//פונקציות בוליאניות בשביל לבדוק שההכנסה עבדה
+    {//פונקציות בוליאניות בשביל לבדוק שההכנסה עבדה??
         void addTester(MY_BE.Tester tester);
         void removeTester(MY_BE.Tester tester);
         void updateTester(MY_BE.Tester tester);

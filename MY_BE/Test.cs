@@ -20,6 +20,7 @@ namespace MY_BE
             //TestParams.Add("", null);
             //TestParams.Add("", null);
             //TestParams.Add("", null);
+            TestNumber = Configuration.TEST_ID++;
         }
         public Test(Test copyTest)
         {
