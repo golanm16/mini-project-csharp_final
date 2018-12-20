@@ -12,7 +12,7 @@ namespace MY_BE
         public static int MIN_CLASS_NUM=20;
         public static int MIN_TRAINEE_AGE=18;
         public static int TEST_TO_TEST_TIME_RANGE=7;
-        public static int TEST_ID=0;
+        public static int TEST_ID=1;
 
     }
 }

@@ -88,6 +88,20 @@ namespace MY_BE
     {
         public Tester()
         {
+            id = 0;
+            FamilyName = "FamilyName";
+            PrivateName = "PrivateName";
+            BirthDate = DateTime.Now;
+            TesterGender = Gender.Other;
+            PhoneNumber = "050-0000000";
+            TesterAdress.City = "Jerusalem";
+            TesterAdress.Street = "Ha-Va'ad ha-Le'umi";
+            TesterAdress.HouseNumber = 21;
+            Seniority = 0;
+            MaxWeeklyTests = 5 * 6;
+            TesterVehicle = VehicleType.PrivateVehicle;
+            MaxDistance = 100;
+            weekdays = new Schedule();
 
         }
         public Tester(Tester tester)

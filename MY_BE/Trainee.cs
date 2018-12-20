@@ -11,6 +11,23 @@ namespace MY_BE
         public Trainee()
         {
             TestDay = DateTime.MinValue;
+            id = 0;
+            FamilyName = "FamilyName";
+            PrivateName = "PrivateName";
+            BirthDate = DateTime.Now;
+            TraineeGender = Gender.Other;
+            PhoneNumber = "050-0000000";
+            TraineeAdress.City = "Jerusalem";
+            TraineeAdress.Street = "Ha-Va'ad ha-Le'umi";
+            TraineeAdress.HouseNumber = 21;
+            TraineeVehicle = VehicleType.PrivateVehicle;
+            TraineeGearbox = GearBox.Automatic;
+            DrivingSchool = "DrivingSchool";
+            TeacherName = "TeacherName";
+            DrivingLessonsNumber = 0;
+            TestDay = DateTime.MinValue;
+            passedTheTest = false;
+
         }
         public Trainee(Trainee trainee)
         {
