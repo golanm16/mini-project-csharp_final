@@ -16,3 +16,14 @@ C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.C
 C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CopyComplete
 C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.dll
 C:\Users\OriBibi\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.pdb
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csprojAssemblyReference.cache
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.dll
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.pdb
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_DAL.dll
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_DAL.pdb
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\DS.dll
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.dll
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\DS.pdb
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.pdb
+C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CopyComplete

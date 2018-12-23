@@ -10,22 +10,19 @@ namespace MY_BE
     {
         public Trainee()
         {
-            TestDay = DateTime.MinValue;
+            TestDay = DateTime.Now.AddDays(-8);
             id = 0;
             FamilyName = "FamilyName";
             PrivateName = "PrivateName";
-            BirthDate = DateTime.Now;
+            BirthDate = DateTime.Now.AddYears(-19);
             TraineeGender = Gender.Other;
             PhoneNumber = "050-0000000";
-            TraineeAdress.City = "Jerusalem";
-            TraineeAdress.Street = "Ha-Va'ad ha-Le'umi";
-            TraineeAdress.HouseNumber = 21;
+            TraineeAdress = new Adress();
             TraineeVehicle = VehicleType.PrivateVehicle;
             TraineeGearbox = GearBox.Automatic;
             DrivingSchool = "DrivingSchool";
             TeacherName = "TeacherName";
-            DrivingLessonsNumber = 0;
-            TestDay = DateTime.MinValue;
+            DrivingLessonsNumber = 30;
             passedTheTest = false;
 
         }

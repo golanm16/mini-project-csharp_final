@@ -91,18 +91,15 @@ namespace MY_BE
             id = 0;
             FamilyName = "FamilyName";
             PrivateName = "PrivateName";
-            BirthDate = DateTime.Now;
+            BirthDate = DateTime.Now.AddYears(-41);
             TesterGender = Gender.Other;
             PhoneNumber = "050-0000000";
-            TesterAdress.City = "Jerusalem";
-            TesterAdress.Street = "Ha-Va'ad ha-Le'umi";
-            TesterAdress.HouseNumber = 21;
-            Seniority = 0;
+            TesterAdress = new Adress();
+            Seniority = 40;
             MaxWeeklyTests = 5 * 6;
             TesterVehicle = VehicleType.PrivateVehicle;
             MaxDistance = 100;
             weekdays = new Schedule();
-
         }
         public Tester(Tester tester)
         {

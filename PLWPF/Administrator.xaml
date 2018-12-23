@@ -1,0 +1,43 @@
+﻿<Window x:Class="PLWPF.Administrator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="Administrator" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New" />
+                <MenuItem Header="Open" />
+                <MenuItem Header="Save" />
+                <MenuItem Header="Save As">
+                    <MenuItem Header="Save as BMP" />
+                    <MenuItem Header="Save as JPG" />
+                    <MenuItem Header="Save as GIF" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" />
+            <MenuItem Header="Format" />
+        </Menu>
+        <TabControl Grid.Row="1">
+            <TabItem Header="test list">
+                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                     x:Name="tests_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            </TabItem>
+            <TabItem Header="testers list">
+                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                     x:Name="testers_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            </TabItem>
+            <TabItem Header="trainee list">
+                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                     x:Name="trainees_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

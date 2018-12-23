@@ -11,15 +11,14 @@ namespace MY_BE
     {
         public Test()
         {
+            TestParams = new Dictionary<string, bool?>();
             TraineeVehicle = VehicleType.PrivateVehicle;
             TestNumber = Configuration.TEST_ID++;
             TesterId = 0;
             TraineeId = 0;
-            TestDate = DateTime.Now.AddYears(-1);
-            TestDateTime= DateTime.Now.AddYears(-1);
-            TestAdress.City = "Jerusalem";
-            TestAdress.Street = "Ha-Va'ad ha-Le'umi";
-            TestAdress.HouseNumber = 21;
+            TestDate = new DateTime(2018,12,23,12,0,0);
+            TestDateTime= new DateTime(2018, 12, 23, 12, 0, 0);
+            TestAdress = new Adress();
             TesterNote = "tester note here.";
             TestParams.Add("stopped on red light", null);//add parameters to check if the trainee drove carefuly
             //TestParams.Add("", null);

@@ -7,7 +7,13 @@ namespace MY_DAL
 {
     public class Dal_imp:Idal
     {
-        public int testid=MY_BE.Configuration.TEST_ID_START;
+        public Dal_imp()
+        {
+            DS.DataSource.testersList = new List<MY_BE.Tester>();
+            DS.DataSource.testsList = new List<MY_BE.Test>();
+            DS.DataSource.traineesList = new List<MY_BE.Trainee>();
+        }
+        public int testid;
         public void addTester(MY_BE.Tester tester)
         {
             DS.DataSource.testersList.Add(tester);
