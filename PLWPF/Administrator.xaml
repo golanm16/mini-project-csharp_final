@@ -20,7 +20,7 @@
             </MenuItem>
             <MenuItem Header="add">
                 <MenuItem Header="test" />
-                <MenuItem Header="tester" />
+                <MenuItem Header="tester" Click="MenuItem_Click_1" />
                 <MenuItem Header="trainee" />
             </MenuItem>
             

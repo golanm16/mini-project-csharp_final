@@ -37,5 +37,12 @@ namespace PLWPF
             m.Show();
             this.Close();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddTester mytester = new AddTester();
+            mytester.Show();
+            this.Close();
+        }
     }
 }

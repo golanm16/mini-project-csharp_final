@@ -27,12 +27,6 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            Tester golan = new Tester();
-            Trainee ori = new Trainee();
-            Test infi = new Test();
-            bl.addTrainee(ori);
-            bl.addTester(golan);
-            bl.addTest(infi);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,13 +47,6 @@ namespace PLWPF
                 tester.Show();
                 this.Close();
             }
-            /*foreach(Tester item in b.getAllTesters())
-            {
-                if (testerId.Text == item.id.ToString("d8"))
-                {
-
-                }
-            }*/
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

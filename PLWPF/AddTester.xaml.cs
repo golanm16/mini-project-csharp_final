@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MY_BE;
+using MY_BL;
 
 namespace PLWPF
 {
@@ -19,9 +21,20 @@ namespace PLWPF
     /// </summary>
     public partial class AddTester : Window
     {
+        IBL bl = FactoryBL.GetInstance();
+        Tester tester = new Tester();
         public AddTester()
         {
             InitializeComponent();
+            addtestergrid.DataContext = tester;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bl.addTester(tester);
+            Administrator admin = new Administrator();
+            admin.Show();
+            this.Close();
         }
     }
 }
