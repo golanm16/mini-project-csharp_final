@@ -13,18 +13,18 @@ namespace MY_BE
         {
             TestParams = new Dictionary<string, bool?>();
             TraineeVehicle = VehicleType.PrivateVehicle;
-            TestNumber = Configuration.TEST_ID++;
+            TestNumber = "0";
             TesterId = 0;
             TraineeId = 0;
-            TestDate = new DateTime(2018,12,23,12,0,0);
-            TestDateTime= new DateTime(2018, 12, 23, 12, 0, 0);
+            TestDate = new DateTime(2019,01,23,12,0,0);
+            TestDateTime= new DateTime(2019, 01, 23, 12, 0, 0);
             TestAdress = new Adress();
             TesterNote = "tester note here.";
-            TestParams.Add("stopped on red light", null);//add parameters to check if the trainee drove carefuly
-            //TestParams.Add("", null);
-            //TestParams.Add("", null);
-            //TestParams.Add("", null);
-            //TestParams.Add("", null);
+            TestParams.Add("stopped on red light & stop signs?", null);//add parameters to check if the trainee drove carefuly
+            TestParams.Add("kept enough distance?", null);
+            TestParams.Add("looked in the mirrors?", null);
+            TestParams.Add("used turn signals?", null);
+            TestParams.Add("parked propely?", null);
             //TestParams.Add("", null);
             //TestParams.Add("", null);
             //TestParams.Add("", null);
@@ -43,7 +43,7 @@ namespace MY_BE
             TestParams = copyTest.TestParams;
         }
         public VehicleType TraineeVehicle { get; set; }// בשביל הבדיקה הראשונה שהייתי צריך לעשות
-        public int TestNumber { get; set; }
+        public string TestNumber { get; set; }
         public int TesterId { get; set; }
         public int TraineeId { get; set; }
         public DateTime TestDate { get; set; }//לכאורה מיותר רצח!

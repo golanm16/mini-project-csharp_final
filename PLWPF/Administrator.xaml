@@ -12,18 +12,18 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="File">
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-                <MenuItem Header="Save" />
-                <MenuItem Header="Save As">
-                    <MenuItem Header="Save as BMP" />
-                    <MenuItem Header="Save as JPG" />
-                    <MenuItem Header="Save as GIF" />
-                </MenuItem>
+            <MenuItem Header="file">
+                <MenuItem Header="save"/>
+                <MenuItem/>
+                <MenuItem/>
+                <MenuItem Header="return to main window" Click="MenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Edit" />
-            <MenuItem Header="Format" />
+            <MenuItem Header="add">
+                <MenuItem Header="test" />
+                <MenuItem Header="tester" />
+                <MenuItem Header="trainee" />
+            </MenuItem>
+            
         </Menu>
         <TabControl Grid.Row="1">
             <TabItem Header="test list">

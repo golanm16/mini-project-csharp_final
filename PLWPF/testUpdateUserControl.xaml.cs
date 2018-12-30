@@ -10,32 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MY_BL;
 using MY_BE;
+using MY_BL;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for Administrator.xaml
+    /// Interaction logic for testUpdateUserControl.xaml
     /// </summary>
-    public partial class Administrator : Window
+    public partial class testUpdateUserControl : UserControl
     {
         IBL bl = FactoryBL.GetInstance();
-        public Administrator()
+        MY_BE.Test testcontrol = new MY_BE.Test();
+        public testUpdateUserControl(Test test)
         {
-            
+            testcontrol = test;
             InitializeComponent();
-            testers_list.ItemsSource = bl.getAllTesters();
-            tests_list.ItemsSource = bl.getAllTests();
-            trainees_list.ItemsSource = bl.getAllTrainees();
-            //testsgrid.Items.Add(golan);
         }
-        
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
         }
     }
 }

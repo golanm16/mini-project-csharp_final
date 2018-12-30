@@ -23,10 +23,16 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        IBL b = FactoryBL.GetInstance();
+        IBL bl = FactoryBL.GetInstance();
         public MainWindow()
         {
             InitializeComponent();
+            Tester golan = new Tester();
+            Trainee ori = new Trainee();
+            Test infi = new Test();
+            bl.addTrainee(ori);
+            bl.addTester(golan);
+            bl.addTest(infi);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,6 +43,28 @@ namespace PLWPF
                 admin.Show();
                 this.Close();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (testerId.Text == "00000000")
+            {
+                testerwindow tester = new testerwindow();
+                tester.Show();
+                this.Close();
+            }
+            /*foreach(Tester item in b.getAllTesters())
+            {
+                if (testerId.Text == item.id.ToString("d8"))
+                {
+
+                }
+            }*/
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -57,7 +57,7 @@ namespace MY_DAL
          
         public void addTest(MY_BE.Test test)
         {
-            test.TestNumber = testid++;
+            test.TestNumber = (MY_BE.Configuration.TEST_ID++).ToString("00000000");
             DS.DataSource.testsList.Add(test);
         }
         public void updateTestOnFinish(MY_BE.Test test)

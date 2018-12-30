@@ -125,7 +125,7 @@ namespace MY_BL
             {
                 if (item.id == test.TraineeId)
                 {
-                    newTrainee = item;// בשביל הבדיקה הראשונה שהייתי צריך לעשות
+                    newTrainee = item;
                     if (item.TraineeVehicle!=test.TraineeVehicle)
                     {
                         canDoTest = false;
@@ -193,6 +193,7 @@ namespace MY_BL
         public void updateTestOnFinish(MY_BE.Test test)
         {
             bool canupdatetest = true;
+            bool testpassed = true;
             foreach(var item in test.TestParams)//check if all testparams was entered false\true
             {
                 if (item.Value == null)
