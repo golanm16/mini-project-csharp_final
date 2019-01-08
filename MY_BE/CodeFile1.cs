@@ -9,4 +9,5 @@ namespace MY_BE
     public enum VehicleType{ PrivateVehicle, TwoWheelVehicle ,MediumTruck,HeavyTruck};
     public enum GearBox { Automatic,Manual};
     public enum Gender { Male,Female,Other};
+    public enum Rating {Bad,NotGood,Good,VeryGood,Perfect};
 }

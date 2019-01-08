@@ -10,33 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MY_BE;
 using MY_BL;
+
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for testUpdateUserControl.xaml
+    /// Interaction logic for addTrainee.xaml
     /// </summary>
-    public partial class testUpdateUserControl : UserControl
+    public partial class addTrainee : Window
     {
         IBL bl = FactoryBL.GetInstance();
-        MY_BE.Test testcontrol = new MY_BE.Test();
-        public testUpdateUserControl(Test test)
+        Trainee trainee = new Trainee();
+        public addTrainee()
         {
-            testcontrol = test;
             InitializeComponent();
-            testUpdateGrid.DataContext = test;
-            par1.ItemsSource = Enum.GetValues(typeof(Rating));
-            par2.ItemsSource = Enum.GetValues(typeof(Rating));
-            par3.ItemsSource = Enum.GetValues(typeof(Rating));
-            par4.ItemsSource = Enum.GetValues(typeof(Rating));
-
+            addtraineegrid.DataContext = trainee;
+            traineeGender.ItemsSource = Enum.GetValues(typeof(Gender));
+            traineeGearbox.ItemsSource = Enum.GetValues(typeof(GearBox));
+            traineeVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            bl.addTrainee(trainee);
+            Administrator admin = new Administrator();
+            admin.Show();
+            this.Close();
         }
     }
 }

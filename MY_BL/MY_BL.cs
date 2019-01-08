@@ -29,5 +29,8 @@ namespace MY_BL
         List<Trainee> groupByDrivingSchool();
         List<Trainee> groupByTester();
         List<Trainee> groupByTestsNumber();
+        void addmyTrainees();
+        void addmyTesters();
+        void addmytests();
     }
 }

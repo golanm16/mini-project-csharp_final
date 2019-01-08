@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using MY_BE;
+using MY_BL;
+namespace PLWPF
+{
+    /// <summary>
+    /// Interaction logic for traineeWindow.xaml
+    /// </summary>
+    public partial class traineeWindow : Window
+    {
+        IBL bl = FactoryBL.GetInstance();
+        Trainee trainee = new Trainee();
+        public traineeWindow(Trainee t)
+        {
+            InitializeComponent();
+            welcomelabel.Content = "Welcome! " + t.PrivateName + " " + t.FamilyName;
+            if (t.passedTheTest)
+            {
+                welcomeBlock.Text = "Congratulations! you passed the test on " +t.TraineeGearbox+ " " + t.TraineeVehicle ;
+            }
+            else
+            {
+                if (t.TestDay < DateTime.Now)
+                {
+                    welcomeBlock.Text = "you haven't passed the test yet on "  + t.TraineeGearbox + " " + t.TraineeVehicle;
+                }
+                else
+                {
+                    welcomeBlock.Text = "your next test is on: " + t.TestDay.ToString();
+                }
+            }
+            trainee = t;
+            addtraineegrid.DataContext = trainee;
+            traineeGender.ItemsSource = Enum.GetValues(typeof(Gender));
+            traineeGearbox.ItemsSource = Enum.GetValues(typeof(GearBox));
+            traineeVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
+        }
+
+        private void editInfo(object sender, RoutedEventArgs e)
+        {
+            updateButton.Content = "update Details";
+            updateButton.Click -= editInfo;
+            updateButton.Click += updateDetails;
+            privateName.IsEnabled = true;
+        }
+        private void updateDetails(object sender, RoutedEventArgs e)
+        {
+            updateButton.Content = "edit Info";
+            updateButton.Click -= updateDetails;
+            updateButton.Click += editInfo;
+            privateName.IsEnabled = false;
+            try
+            {
+                bl.updateTrainee(trainee);
+            }catch(Exception e1) { }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in bl.getAllTests())
+            {
+                if (item.TraineeId == trainee.id && item.TraineeVehicle == trainee.TraineeVehicle)
+                {
+                    testUpdateUserControl newtest = new testUpdateUserControl(item);
+                    mainGrid.Children.Clear();
+                    mainGrid.Children.Add(newtest);
+                    break;
+                }
+            }
+            
+        }
+    }
+}

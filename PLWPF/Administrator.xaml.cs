@@ -23,14 +23,21 @@ namespace PLWPF
         IBL bl = FactoryBL.GetInstance();
         public Administrator()
         {
-            
             InitializeComponent();
             testers_list.ItemsSource = bl.getAllTesters();
             tests_list.ItemsSource = bl.getAllTests();
             trainees_list.ItemsSource = bl.getAllTrainees();
+            //Closing += Administrator_Closed;
             //testsgrid.Items.Add(golan);
         }
-        
+
+        /*private void Administrator_Closed(object sender, EventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
+        }*/
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MainWindow m = new MainWindow();
@@ -42,6 +49,20 @@ namespace PLWPF
         {
             AddTester mytester = new AddTester();
             mytester.Show();
+            this.Close();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            addTrainee addtrainee = new addTrainee();
+            addtrainee.Show();
+            this.Close();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            addTest addtest = new addTest();
+            addtest.Show();
             this.Close();
         }
     }

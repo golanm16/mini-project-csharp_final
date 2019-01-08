@@ -11,7 +11,8 @@ namespace MY_BE
     {
         public Test()
         {
-            TestParams = new Dictionary<string, bool?>();
+            BoolTestParams = new Dictionary<string, bool?>();
+            TestParams = new Dictionary<string, Rating>();
             TraineeVehicle = VehicleType.PrivateVehicle;
             TestNumber = "0";
             TesterId = 0;
@@ -20,11 +21,11 @@ namespace MY_BE
             TestDateTime= new DateTime(2019, 01, 23, 12, 0, 0);
             TestAdress = new Adress();
             TesterNote = "tester note here.";
-            TestParams.Add("stopped on red light & stop signs?", null);//add parameters to check if the trainee drove carefuly
-            TestParams.Add("kept enough distance?", null);
-            TestParams.Add("looked in the mirrors?", null);
-            TestParams.Add("used turn signals?", null);
-            TestParams.Add("parked propely?", null);
+            BoolTestParams.Add("stopped?", null);//add parameters to check if the trainee drove carefuly
+            TestParams.Add("distance?", 0);
+            TestParams.Add("mirrors?", 0);
+            TestParams.Add("turn signals?", 0);
+            TestParams.Add("parking?", 0);
             //TestParams.Add("", null);
             //TestParams.Add("", null);
             //TestParams.Add("", null);
@@ -49,7 +50,8 @@ namespace MY_BE
         public DateTime TestDate { get; set; }//לכאורה מיותר רצח!
         public DateTime TestDateTime { get; set; }
         public Adress TestAdress { get; set; }
-        public Dictionary<string,bool?> TestParams { get; set; }//make a lot of those!
+        public Dictionary<string,Rating> TestParams { get; set; }//make a lot of those!
+        public Dictionary<string, bool?> BoolTestParams { get; set; }
         //params for careful driving, stopping at stop sign,etc...
 
         public string TesterNote { get; set; }

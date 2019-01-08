@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using MY_BE;
+using MY_BL;
 namespace PLWPF
 {
     /// <summary>
@@ -19,9 +20,25 @@ namespace PLWPF
     /// </summary>
     public partial class testerwindow : Window
     {
+        IBL bl = FactoryBL.GetInstance();
         public testerwindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Test item in bl.getAllTests())
+            {
+                if (item.TestNumber == testIdBox.Text)
+                {
+                    testUpdateUserControl testUp = new testUpdateUserControl(item);
+                    testblock.Children.Clear();
+                    testblock.Children.Add(testUp);
+                    this.Height = 620;
+                    this.Width = 580;
+                }
+            }
         }
     }
 }

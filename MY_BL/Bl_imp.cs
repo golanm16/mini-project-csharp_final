@@ -119,6 +119,7 @@ namespace MY_BL
         {
 
             bool canDoTest = true;
+            string exception = "";
             Trainee newTrainee = new Trainee();
             Tester newTester = new Tester();
             foreach (var item in getAllTrainees())//check if trainee is valid for test
@@ -129,54 +130,56 @@ namespace MY_BL
                     if (item.TraineeVehicle!=test.TraineeVehicle)
                     {
                         canDoTest = false;
-                        throw new Exception("The Trainee is tested on other vehicles");
+                        exception+="The Trainee is tested on other vehicles\n";
                     }//trainee vehicle is the same as test vehicle
                     else if (item.TraineeVehicle == test.TraineeVehicle && item.passedTheTest==true)
                     {
                         canDoTest = false;
-                        throw new Exception("The Trainee has already passed the test");
+                        exception += "The Trainee has already passed the test\n";
                     }//if the trainee already passed the test
                     if ((test.TestDateTime - item.TestDay).TotalDays <= Configuration.TEST_TO_TEST_TIME_RANGE)
                     {
                         canDoTest = false;
-                        throw new Exception("you need to wait 7 days between tests");
+                        exception+="you need to wait 7 days between tests\n";
                     }//a week between the last test and current test
                     if (item.DrivingLessonsNumber < Configuration.MIN_CLASS_NUM)
                     {
                         canDoTest = false;
-                        throw new Exception("atleast 20 lessons required to make a test");
+                        exception+="atleast 20 lessons required to make a test\n";
                     }//check if the trainee did less than 20 lessons
                     break;//only one student with matching id in the list
                 }
             }
+            //var arr = getAllTesters().Where(x => x.weekdays[test.TestDateTime.DayOfWeek, test.TestDateTime.Hour]);
+            
             foreach (var item in getAllTesters())
             {
+                canDoTest = true;
                 if (!item.weekdays[test.TestDateTime.DayOfWeek, test.TestDateTime.Hour])
                 {
                     canDoTest = false;
-                    try
+                    /*try
                     {
-                        item.nextAvailableTest();
+                        //item.nextAvailableTest();
                     }
                     catch(Exception e)
                     {
-                        throw new Exception("the selected hour is already taken.\n" + e.Message);
-                    }
-                    break;
+                        exception += "the selected hour is already taken.\n" + e.Message;
+                    }*/
                 }//check if the test hour is not taken
                 if (item.MaxWeeklyTests <= item.weekdays.currentWeeklyTests)
                 {
                     canDoTest = false;
-                    break;
+                    exception += "passed the max number of tests this week\n";
                 }//check if the tester passed the max weekly tests 
                 if (newTrainee.TraineeVehicle!=item.TesterVehicle)
                 {
                     canDoTest = false;
-                    throw new Exception("The tester can test on another type of vehicle");
-                    break;
-                }// בשביל הבדיקה השנייה שהייתי צריך לעשות
+                    exception += "The tester can test on another type of vehicle";
+                }//check if the tester test on the trainee vehicle
                 if (canDoTest)
                 {
+                    newTester = item;
                     test.TesterId = item.id;
                     break;
                 }//if the tester is available for testing assign the tester for the test
@@ -336,6 +339,85 @@ namespace MY_BL
                 }
             }
             return tlist;
+        }
+        public void addmyTrainees()
+        {
+
+            int i, y = -19, num = 25, phone = 0500000000, hnum = 18;
+            string name = "n", school = "s";
+            DateTime dt = DateTime.Now.AddYears(y);
+            for (i = 0; i < 10; i++)
+            {
+                Trainee trainee = new Trainee();
+                trainee.PrivateName = name += "a";
+                trainee.FamilyName = name += "b";
+                trainee.BirthDate = dt.AddYears(y--);
+                trainee.DrivingLessonsNumber = num += 2;
+                trainee.DrivingSchool = school += "a";
+                trainee.id = i;
+                trainee.PhoneNumber = (phone += 465).ToString("0000000000");
+                trainee.TraineeAdress.City = "jerusalem";
+                trainee.TraineeAdress.Street = "havaad hleumi";
+                trainee.TraineeAdress.HouseNumber = hnum++;
+                trainee.TraineeGearbox = GearBox.Automatic;
+                trainee.TraineeGender = Gender.Male;
+                trainee.TraineeVehicle = VehicleType.PrivateVehicle;
+                try
+                {
+                    addTrainee(trainee);
+                }
+                catch (Exception e) { }
+            }
+        }
+        public void addmyTesters()
+        {
+
+            int i, y = -41, num = 15, phone = 0520000000, hnum = 18 ,s=10;
+            string name = "t";
+            DateTime dt = DateTime.Now.AddYears(y);
+            for (i = 0; i < 10; i++)
+            {
+                Tester tester = new Tester();
+                tester.PrivateName = name += "a";
+                tester.FamilyName = name += "b";
+                tester.BirthDate = dt.AddYears(y--);
+                tester.MaxDistance = num += 2;
+                tester.id = i;
+                tester.PhoneNumber = (phone += 236).ToString("0000000000");
+                tester.TesterAdress.City = "jerusalem";
+                tester.TesterAdress.Street = "bait vagan";
+                tester.TesterAdress.HouseNumber = hnum++;
+                tester.TesterGender = Gender.Male;
+                tester.TesterVehicle = VehicleType.PrivateVehicle;
+                tester.MaxWeeklyTests = hnum += 3;
+                tester.Seniority = s++;
+                try
+                {
+                    addTester(tester);
+                }
+                catch (Exception e) { }
+            }
+        }
+        public void addmytests()
+        {
+            int i,hn=40,teid=10,trid=0;
+            for (i = 0; i < 5; i++)
+            {
+                Test test = new Test();
+                test.TestAdress.City = "j-city";
+                test.TestAdress.Street = "yafo";
+                test.TestAdress.HouseNumber = hn += 4;
+                test.TestDate = new DateTime(2019,01,15,12,30,0);
+                test.TestDateTime = test.TestDate;
+                test.TesterId = teid--;
+                test.TraineeId = trid++;
+                test.TraineeVehicle = VehicleType.PrivateVehicle;
+                try
+                {
+                    addTest(test);
+                }
+                catch (Exception e) { }
+            }
         }
     }
 

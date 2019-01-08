@@ -27,6 +27,8 @@ namespace PLWPF
         {
             InitializeComponent();
             addtestergrid.DataContext = tester;
+            testerGender.ItemsSource= Enum.GetValues(typeof(Gender));
+            testerVehicle.ItemsSource= Enum.GetValues(typeof(VehicleType));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

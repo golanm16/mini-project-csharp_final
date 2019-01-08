@@ -7,8 +7,35 @@
         mc:Ignorable="d"
         Title="testerwindow" Height="450" Width="800">
     <Grid>
-        <Grid>
-            <local:testerScreen/>
+
+        <Grid Width="900" >
+            <Grid.ColumnDefinitions  >
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="Azure">
+                    <Label  Content="Welcome to your user management, " FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid x:Name="testblock" Grid.Row="1">
+                    <Label Content="enter test id:" Height="40"/>
+                    <TextBox x:Name="testIdBox" Text="00000001" HorizontalAlignment="Center" Height="40"/>
+                    <Button Content="submit" HorizontalAlignment="Right" Height="40" Click="Button_Click"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="update test" Grid.Column="0" Margin="5,5,5,5"/>
+                    <Button Content="update tester info" Grid.Column="1" Margin="5,5,5,5"/>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

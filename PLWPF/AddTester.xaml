@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddTester" Height="600" Width="500">
+        Title="AddTester" Height="450" Width="400">
+    
     <Grid>
         <Border BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="10">
             <Grid  x:Name="addtestergrid">
@@ -20,8 +21,8 @@
                 <TextBlock Text="new tester" />
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="25*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -48,16 +49,11 @@
                     <Label Content="Id" Grid.Row="2" />
                     <TextBox Text="{Binding Path=id, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="2" x:Name="id" />
                     <Label Content="Tester Gender" Grid.Row="3" />
-                    <TextBox Text="{Binding Path=TesterGender, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="3" x:Name="testerGender" />
+                    <ComboBox Text="{Binding Path=TesterGender, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="3" x:Name="testerGender" />
                     <Label Content="Birth Date" Grid.Row="4" />
                     <DatePicker SelectedDate="{Binding Path=BirthDate, Mode=OneWayToSource}" SelectedDateFormat="Short" Grid.Column="1" Grid.Row="4" x:Name="birthDate" />
                     <Label Content="Tester Vehicle" Grid.Row="5" />
-                    <ComboBox SelectedItem="{Binding Path=TesterVehicle, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="5" x:Name="testerVehicle" >
-                        <ComboBoxItem Content="PrivateVehicle"/>
-                        <ComboBoxItem Content="TwoWheelVehicle"/>
-                        <ComboBoxItem Content="MediumTruck"/>
-                        <ComboBoxItem Content="HeavyTruck"/>
-                    </ComboBox>
+                    <ComboBox SelectedItem="{Binding Path=TesterVehicle, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="5" x:Name="testerVehicle" />
                     <Label Content="Seniority" Grid.Row="6" />
                     <TextBox Text="{Binding Path=Seniority, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="6" x:Name="seniority" />
                     <Label Content="Phone Number" Grid.Row="7" />
@@ -67,7 +63,7 @@
                     <Label Content="Max Weekly Tests" Grid.Row="9" />
                     <TextBox Text="{Binding Path=MaxWeeklyTests, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="9" x:Name="maxWeeklyTests" />
                     <Label Content="City" Grid.Row="10" />
-                    <TextBox Text="{Binding Path=TesterAdress.City, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="10" x:Name="adress_City" />
+                    <TextBox Text="{Binding Path=TesterAdress.City, Mode=TwoWay}" IsEnabled="False" Grid.Column="1" Grid.Row="10" x:Name="adress_City" />
                     <Label Content="Street Name" Grid.Row="11" />
                     <TextBox Text="{Binding Path=TesterAdress.Street, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="11" x:Name="adress_Street" />
                     <Label Content="House Number" Grid.Row="12" />

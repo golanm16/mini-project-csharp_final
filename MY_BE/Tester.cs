@@ -132,7 +132,7 @@ namespace MY_BE
         {
             return "";
         }
-        public void nextAvailableTest()
+        /*public string nextAvailableTest()
         {
             for (DayOfWeek a = DateTime.Today.DayOfWeek; a <= DayOfWeek.Saturday; a++)
             {
@@ -140,10 +140,11 @@ namespace MY_BE
                 {
                     if (weekdays[a, i])
                     {
-                        throw new Exception("next test available in: " + a + " " + i+":00");
+                        return "next test available in: " + a + " " + i+":00";
                     }
                 }
             }
-        }
+
+        }*/
     }
 }

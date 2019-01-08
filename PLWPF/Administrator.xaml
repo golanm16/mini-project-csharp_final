@@ -19,9 +19,9 @@
                 <MenuItem Header="return to main window" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="add">
-                <MenuItem Header="test" />
+                <MenuItem Header="test" Click="MenuItem_Click_3" />
                 <MenuItem Header="tester" Click="MenuItem_Click_1" />
-                <MenuItem Header="trainee" />
+                <MenuItem Header="trainee" Click="MenuItem_Click_2" />
             </MenuItem>
             
         </Menu>

@@ -10,7 +10,7 @@ namespace MY_BE
     {
         public Trainee()
         {
-            TestDay = DateTime.Now;
+            TestDay = DateTime.Now.AddYears(-20);
             id = 0;
             FamilyName = "FamilyName";
             PrivateName = "PrivateName";

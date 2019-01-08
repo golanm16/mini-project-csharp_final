@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,6 +28,9 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
+            bl.addmyTrainees();
+            bl.addmyTesters();
+            bl.addmytests();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,17 +45,29 @@ namespace PLWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (testerId.Text == "00000000")
+            int tid;
+            int.TryParse(testerId.Text,out tid);
+            Tester tester = bl.getAllTesters().Where(x => x.id == tid).First();
+            if (tester!=null)
             {
-                testerwindow tester = new testerwindow();
-                tester.Show();
+                testerwindow testerw = new testerwindow();
+                testerw.Show();
                 this.Close();
             }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            int tid;
+            bool flag=int.TryParse(traineeid.Text, out tid);
+            Trainee trainee = bl.getAllTrainees().Where(item => item.id == tid).First();
 
+            if (trainee != null)
+            {
+                traineeWindow traineew = new traineeWindow(trainee);
+                traineew.Show();
+                this.Close();
+            }
         }
     }
 }
