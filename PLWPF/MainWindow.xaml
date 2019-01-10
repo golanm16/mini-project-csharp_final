@@ -26,7 +26,7 @@
                     <Button x:Name="AdminSubmit" Content="submit" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Width="150" Height="25" Click="Button_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Tester">
+            <TabItem Header="Tester" PreviewMouseLeftButtonDown="{Binding Path=testerId, Source=PreviewMouseLeftButtonDown, Mode=TwoWay}">
                 <Grid Width="390" Height="140">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120"/>
@@ -38,7 +38,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Tester ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="testerId" Text="00000000" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center"/>
+                    <TextBox Name="testerId" Text="00000000" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center" PreviewKeyUp="testerId_EnterButton" />
                     <Button Content="submit" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Width="150" Height="25" Click="Button_Click_1"/>
                 </Grid>
             </TabItem>
@@ -54,7 +54,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Trainee ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox Text="00000000" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center" x:Name="traineeid"/>
+                    <TextBox Text="00000000" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center" x:Name="traineeid" PreviewKeyUp="traineeid_EnterButton"/>
                     <Button Content="submit" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Width="150" Height="25" Click="Button_Click_2"/>
                 </Grid>
             </TabItem>

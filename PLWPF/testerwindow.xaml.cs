@@ -21,23 +21,38 @@ namespace PLWPF
     public partial class testerwindow : Window
     {
         IBL bl = FactoryBL.GetInstance();
-        public testerwindow()
+        public testerwindow(Tester tester)
         {
             InitializeComponent();
+            this.Closing += this.On_Closed;
+        }
+
+        private void On_Closed(Object sender,System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Test item in bl.getAllTests())
+            int id;
+            if (int.TryParse(testIdBox.Text, out id))
             {
-                if (item.TestNumber == testIdBox.Text)
-                {
-                    testUpdateUserControl testUp = new testUpdateUserControl(item);
-                    testblock.Children.Clear();
-                    testblock.Children.Add(testUp);
-                    this.Height = 620;
-                    this.Width = 580;
-                }
+                Test test = bl.getAllTests().Where(x => x.TestNumber == id.ToString("00000000")).First();
+                testUpdateWindow testUp = new testUpdateWindow(test);
+                testUp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("must enter a number in id field!", "Error!");
+            }
+        }
+
+        private void tib_Enter_Pressed(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(this, new RoutedEventArgs());
             }
         }
     }

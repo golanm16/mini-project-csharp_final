@@ -1,12 +1,11 @@
-﻿<UserControl x:Class="PLWPF.testUpdateUserControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PLWPF"
-             mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="380">
-    
+﻿<Window x:Class="PLWPF.testUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="testUpdateWindow" Height="450" Width="800">
     <Grid Background="WhiteSmoke" Name="testUpdateGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -58,4 +57,4 @@
         <ComboBox SelectedItem="{Binding Path=TestParams[mirrors?],Mode=TwoWay}" Grid.Row="13" Grid.Column="1" Name="par4"/>
         <Button Content="submit test grading" Grid.Row="14" Grid.ColumnSpan="2" Width="160" Click="Submit_test"/>
     </Grid>
-</UserControl>
+</Window>

@@ -41,8 +41,8 @@ namespace MY_BE
                 return week[d];
             }
         }*/
-        bool[,] week;
-        public int currentWeeklyTests;
+        public bool[,] week { get; set; }
+        public int currentWeeklyTests { get; set; }
         public Schedule()
         {
             week = new bool[7, 6];

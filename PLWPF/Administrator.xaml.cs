@@ -27,16 +27,14 @@ namespace PLWPF
             testers_list.ItemsSource = bl.getAllTesters();
             tests_list.ItemsSource = bl.getAllTests();
             trainees_list.ItemsSource = bl.getAllTrainees();
-            //Closing += Administrator_Closed;
-            //testsgrid.Items.Add(golan);
+            Closing += On_Closed;
         }
-
-        /*private void Administrator_Closed(object sender, EventArgs e)
+        
+        private void On_Closed(Object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
-        }*/
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

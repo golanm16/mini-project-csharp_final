@@ -7,35 +7,21 @@
         mc:Ignorable="d"
         Title="testerwindow" Height="450" Width="800">
     <Grid>
-
-        <Grid Width="900" >
-            <Grid.ColumnDefinitions  >
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*"/>
+        <Grid.ColumnDefinitions  >
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="6*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Background="Azure">
-                    <Label  Content="Welcome to your user management, " FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="testblock" Grid.Row="1">
-                    <Label Content="enter test id:" Height="40"/>
-                    <TextBox x:Name="testIdBox" Text="00000001" HorizontalAlignment="Center" Height="40"/>
-                    <Button Content="submit" HorizontalAlignment="Right" Height="40" Click="Button_Click"/>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="update test" Grid.Column="0" Margin="5,5,5,5"/>
-                    <Button Content="update tester info" Grid.Column="1" Margin="5,5,5,5"/>
-                </Grid>
-            </Grid>
+        <Grid Grid.Column="0" Name="testblock">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Label  Content="Welcome to your user management, " FontSize="18" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="to check test enter test id:" Height="40" Grid.Row="1"/>
+            <TextBox x:Name="testIdBox" Text="00000001" HorizontalAlignment="Center" Height="40" Grid.Row="1" PreviewKeyUp="tib_Enter_Pressed"/>
+            <Button Content="submit" HorizontalAlignment="Right" Height="40" Click="Button_Click" Grid.Row="1" Name="submitButton"/>
+            
         </Grid>
     </Grid>
 </Window>

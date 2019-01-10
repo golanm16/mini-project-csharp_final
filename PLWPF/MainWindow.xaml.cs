@@ -46,28 +46,57 @@ namespace PLWPF
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             int tid;
-            int.TryParse(testerId.Text,out tid);
-            Tester tester = bl.getAllTesters().Where(x => x.id == tid).First();
-            if (tester!=null)
+            if (int.TryParse(testerId.Text, out tid))
             {
-                testerwindow testerw = new testerwindow();
-                testerw.Show();
-                this.Close();
+                Tester tester = bl.getAllTesters().Where(x => x.id == tid).First();
+                if (tester != null)
+                {
+                    testerwindow testerw = new testerwindow(tester);
+                    testerw.Show();
+                    this.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("must enter number in tester id!","ERROR!");
             }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             int tid;
-            bool flag=int.TryParse(traineeid.Text, out tid);
-            Trainee trainee = bl.getAllTrainees().Where(item => item.id == tid).First();
-
-            if (trainee != null)
+            if (int.TryParse(traineeid.Text, out tid))
             {
-                traineeWindow traineew = new traineeWindow(trainee);
-                traineew.Show();
-                this.Close();
+                Trainee trainee = bl.getAllTrainees().Where(item => item.id == tid).First();
+                if (trainee != null)
+                {
+                    traineeWindow traineew = new traineeWindow(trainee);
+                    traineew.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("must enter number in tester id!", "ERROR!");
             }
         }
+
+        private void testerId_EnterButton(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_1(this, new RoutedEventArgs());
+            }
+            
+        }
+
+        private void traineeid_EnterButton(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_2(this, new RoutedEventArgs()); ;
+            }
+        }
+        
     }
 }
