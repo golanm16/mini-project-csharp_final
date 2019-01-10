@@ -20,13 +20,13 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label Content="UserName:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="AdminUsername" Text="admin" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="AdminUsername" Text="admin" Grid.Column="1" Grid.Row="0" Width="180" Height="25" HorizontalAlignment="Center" PreviewKeyUp="AdminUsername_PreviewKeyUp"/>
                     <Label Content="Password:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <PasswordBox x:Name="AdminPassword" Password="admin" Grid.Column="1" Grid.Row="1" Width="180" Height="25" HorizontalAlignment="Center" />
+                    <PasswordBox x:Name="AdminPassword" Password="admin" Grid.Column="1" Grid.Row="1" Width="180" Height="25" HorizontalAlignment="Center" PreviewKeyUp="AdminPassword_PreviewKeyUp"/>
                     <Button x:Name="AdminSubmit" Content="submit" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Width="150" Height="25" Click="Button_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Tester" PreviewMouseLeftButtonDown="{Binding Path=testerId, Source=PreviewMouseLeftButtonDown, Mode=TwoWay}">
+            <TabItem Header="Tester">
                 <Grid Width="390" Height="140">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120"/>

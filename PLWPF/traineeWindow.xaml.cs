@@ -46,6 +46,12 @@ namespace PLWPF
             traineeGender.ItemsSource = Enum.GetValues(typeof(Gender));
             traineeGearbox.ItemsSource = Enum.GetValues(typeof(GearBox));
             traineeVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
+            this.Closing += this.On_Closed;
+        }
+        private void On_Closed(Object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
 
         private void editInfo(object sender, RoutedEventArgs e)
@@ -64,7 +70,10 @@ namespace PLWPF
             try
             {
                 bl.updateTrainee(trainee);
-            }catch(Exception e1) { }
+            }catch(Exception e1)
+            {
+                MessageBox.Show("trainee info couldn't be updated due to:\n"+e1.Message);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

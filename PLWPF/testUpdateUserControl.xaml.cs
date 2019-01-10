@@ -38,7 +38,6 @@ namespace PLWPF
         private void Submit_test(object sender, RoutedEventArgs e)
         {
             bl.updateTestOnFinish(testcontrol);
-
         }
     }
 }

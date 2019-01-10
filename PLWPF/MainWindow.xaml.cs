@@ -97,6 +97,21 @@ namespace PLWPF
                 Button_Click_2(this, new RoutedEventArgs()); ;
             }
         }
-        
+
+        private void AdminUsername_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Keyboard.Focus(AdminPassword);
+            }
+        }
+
+        private void AdminPassword_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(sender, e);
+            }
+        }
     }
 }

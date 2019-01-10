@@ -28,6 +28,7 @@ namespace PLWPF
         {
             InitializeComponent();
             tester = t;
+            scontrol.DataContext = t;
         }
     }
 }

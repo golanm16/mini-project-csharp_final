@@ -21,16 +21,21 @@ namespace PLWPF
     public partial class testerwindow : Window
     {
         IBL bl = FactoryBL.GetInstance();
-        public testerwindow(Tester tester)
+        Tester tester = new Tester();
+        public testerwindow(Tester t)
         {
+            tester = t;
             InitializeComponent();
             this.Closing += this.On_Closed;
+            //schedulegrid.Children.Clear();
+            //testerSchedule ts = new testerSchedule(tester);
         }
 
         private void On_Closed(Object sender,System.ComponentModel.CancelEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
