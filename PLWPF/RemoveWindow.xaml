@@ -1,0 +1,17 @@
+﻿<Window x:Class="PLWPF.RemoveWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="RemoveWindow" Height="100" Width="250">
+    <Grid Height="50" Width="180">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Height="25" Name="idbox" KeyUp="idbox_KeyUp"/>
+        <Button Grid.Row="1" Content="remove" Name="removeButton" Height="25" Width="100"/>
+    </Grid>
+</Window>

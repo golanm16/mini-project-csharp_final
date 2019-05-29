@@ -3,21 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MY_BE;
+using MY_DAL;
 namespace MY_BL
 {
     public interface IBL
     {
-        void addTester(MY_BE.Tester tester);
-        void removeTester(MY_BE.Tester tester);
-        void updateTester(MY_BE.Tester tester);
-        void addTrainee(MY_BE.Trainee trainee);
-        void removeTrainee(MY_BE.Trainee trainee);
-        void updateTrainee(MY_BE.Trainee trainee);
-        void addTest(MY_BE.Test test);
-        void updateTestOnFinish(MY_BE.Test test);
-        List<MY_BE.Tester> getAllTesters();
-        List<MY_BE.Trainee> getAllTrainees();
-        List<MY_BE.Test> getAllTests();
+        void addTester(Tester tester);
+        void removeTester(Tester tester);
+        void updateTester(Tester tester);
+        void addTrainee(Trainee trainee);
+        void removeTrainee(Trainee trainee);
+        void updateTrainee(Trainee trainee);
+        void addTest(Test test);
+        void updateTestOnFinish(Test test);
+        List<Tester> getAllTesters();
+        List<Trainee> getAllTrainees();
+        List<Test> getAllTests();
+        List<Tester> getNearbyTesters(Adress ad);
+        List<Tester> getTestersAtHour(DateTime dt);
+        int numOfTests(Trainee trainee);
+        bool passedTheTest(Trainee trtrainee);
+        List<Test> testsOnDate(DateTime dt);
+        List<Tester> groupByVehicleType();
+        List<Trainee> groupByDrivingSchool();
+        List<Trainee> groupByTester();
+        List<Trainee> groupByTestsNumber();
+        /*void addmyTrainees();
+        void addmyTesters();
+        void addmytests();*/
     }
 }
