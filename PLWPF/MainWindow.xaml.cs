@@ -28,9 +28,6 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            bl.addmyTrainees();
-            bl.addmyTesters();
-            bl.addmytests();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,51 +38,59 @@ namespace PLWPF
                 admin.Show();
                 this.Close();
             }
-        }
+        }//admin signin window
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void testerClick(object sender, RoutedEventArgs e)
         {
             int tid;
-            if (int.TryParse(testerId.Text, out tid))
+            if (int.TryParse(testerId.Text, out tid))//check the user entered a number
             {
-                Tester tester = bl.getAllTesters().Where(x => x.id == tid).First();
+                Tester tester = bl.getAllTesters().Where(x => x.id == tid).FirstOrDefault();
                 if (tester != null)
                 {
                     testerwindow testerw = new testerwindow(tester);
                     testerw.Show();
-                    this.Hide();
+                    this.Close();
+                }//check that the tester exists
+                else
+                {
+                    MessageBox.Show("tester does not exist!", "ERROR!");
                 }
             }
             else
             {
                 MessageBox.Show("must enter number in tester id!","ERROR!");
             }
-        }
+        }//tester signin window
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void traineeClick(object sender, RoutedEventArgs e)
         {
             int tid;
-            if (int.TryParse(traineeid.Text, out tid))
+            if (int.TryParse(traineeid.Text, out tid))//check the user entered a number
             {
-                Trainee trainee = bl.getAllTrainees().Where(item => item.id == tid).First();
+                Trainee trainee = bl.getAllTrainees().Where(item => item.id == tid).FirstOrDefault();
                 if (trainee != null)
                 {
                     traineeWindow traineew = new traineeWindow(trainee);
                     traineew.Show();
                     this.Close();
+                }//check that the trainee exists
+                else
+                {
+                    MessageBox.Show("trainee does not exist!");
                 }
             }
             else
             {
                 MessageBox.Show("must enter number in tester id!", "ERROR!");
             }
-        }
+        }//trainee signin window
 
         private void testerId_EnterButton(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                Button_Click_1(this, new RoutedEventArgs());
+                testerClick(this, new RoutedEventArgs());
             }
             
         }
@@ -94,7 +99,7 @@ namespace PLWPF
         {
             if (e.Key == Key.Enter)
             {
-                Button_Click_2(this, new RoutedEventArgs()); ;
+                traineeClick(this, new RoutedEventArgs()); ;
             }
         }
 

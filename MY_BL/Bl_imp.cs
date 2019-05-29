@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.IO;
+using System.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using MY_BE;
@@ -13,51 +16,82 @@ namespace MY_BL
         public void addTester(Tester tester)
         {
             DateTime today = DateTime.Today;
+            bool canadd=true;
+            string exception = "";
             int age = today.Year - tester.BirthDate.Year;
+            foreach(Tester item in getAllTesters())
+            {
+                if (tester.id == item.id)
+                {
+                    exception += "tester with the same id already exists\n";
+                    canadd = false;
+                }
+            }
             if (tester.BirthDate > today.AddYears(-1*age))
             {
                 age--;
             }
-            if (age >= Configuration.MIN_TESTER_AGE)
+            if(age <= Configuration.MIN_TESTER_AGE)
+            {
+                canadd = false;
+                exception += "tried to insert tester younger than 40\n";
+            }
+            if (tester.Seniority < Configuration.MIN_TESTER_SENIORITY)
+            {
+                canadd = false;
+                exception += "tester must have 15 years of seniority";
+            }
+            if (tester.id <= 0)
+            {
+                canadd = false;
+                exception += "id must be larger tahn 0";
+            }
+            if (canadd)
             {
                 d.addTester(tester);
             }
             else
             {
-                throw new Exception("tried to insert tester younger than 40");
+                throw new Exception(exception);
             }
         }
         public void removeTester(MY_BE.Tester tester)
         {
+            if (tester == null)
+            {
+                throw new Exception("tester is null");
+            }
             bool tester_exists = false;
             foreach(Tester item in getAllTesters())
             {
                 if (item.id == tester.id)
                 {
                     tester_exists = true;
-                    d.removeTester(tester);
                 }
             }
             if (!tester_exists)
             {
                 throw new Exception("tried removing a tester not in database");
             }
+            else
+            {
+                d.removeTester(tester);
+            }
         }
         public void updateTester(MY_BE.Tester tester)
         {
             bool tester_exists = false;
+            Tester t = new Tester();
+            bool canchange = false;
             foreach (Tester item in getAllTesters())
             {
+                
                 if (item.id == tester.id)
                 {
                     tester_exists = true;
                     if (item.BirthDate == tester.BirthDate && item.TesterGender == tester.TesterGender)
                     {
-                        d.updateTester(tester);
-                    }
-                    else
-                    {
-                        throw new Exception("cant change birth date & gender");
+                        canchange = true;
                     }
                 }
             }
@@ -65,16 +99,42 @@ namespace MY_BL
             {
                 throw new Exception("tried updating a tester not in database");
             }
+            if (canchange)
+            {
+                d.updateTester(tester);
+            }
+            else
+            {
+                throw new Exception("can't change birth date & gender");
+            }
         }
         public void addTrainee(MY_BE.Trainee trainee)
         {
-            int traineeBirthYear = int.Parse(trainee.BirthDate.Year.ToString());
-            int currentYear = int.Parse(DateTime.Now.Year.ToString());
-            if (currentYear - traineeBirthYear > Configuration.MIN_TRAINEE_AGE)
+            int traineeBirthYear = trainee.BirthDate.Year;
+            bool canaddtrainee = true;
+            int currentYear = DateTime.Now.Year;
+            string exception = "";
+            foreach(Trainee item in getAllTrainees())
+            {
+                if (trainee.id == item.id)
+                {
+                    exception += "trainee with the same id already exists\n";
+                    canaddtrainee = false;
+                }
+            }
+            if (currentYear - traineeBirthYear < Configuration.MIN_TRAINEE_AGE)
+            {
+                canaddtrainee = false;
+                exception += "tried to insert trainee younger than 18.\n";
+            }
+            if (canaddtrainee)
             {
                 d.addTrainee(trainee);
             }
-            else throw new Exception("tried to insert trainee younger than 18");
+            else
+            {
+                throw new Exception(exception);
+            }
         }
         public void removeTrainee(MY_BE.Trainee trainee)
         {
@@ -84,17 +144,22 @@ namespace MY_BL
                 if (item.id == trainee.id)
                 {
                     trainee_exists = true;
-                    d.removeTrainee(trainee);
+                    
                 }
             }
             if (!trainee_exists)
             {
                 throw new Exception("tried removing a trainee not in database");
             }
+            else
+            {
+                d.removeTrainee(trainee);
+            }
         }
         public void updateTrainee(MY_BE.Trainee trainee)
         {
             bool trainee_exists = false;
+            bool canupdate = false;
             foreach (Trainee item in getAllTrainees())
             {
                 if (item.id == trainee.id)
@@ -102,42 +167,66 @@ namespace MY_BL
                     trainee_exists = true;
                     if (item.BirthDate == trainee.BirthDate && item.TraineeGender == trainee.TraineeGender)
                     {
-                        d.updateTrainee(trainee);
+                        canupdate = true;
                     }
-                    else
-                    {
-                        throw new Exception("cant change birth date & gender");
-                    }
+                    
                 }
             }
             if (!trainee_exists)
             {
                 throw new Exception("tried updating a trainee not in database");
             }
+            if (canupdate)
+            {
+                d.updateTrainee(trainee);
+            }
+            else
+            {
+                throw new Exception("cant change birth date & gender");
+            }
         }
         public void addTest(MY_BE.Test test)
         {
-
             bool canDoTest = true;
             string exception = "";
-            Trainee newTrainee = new Trainee();
-            Tester newTester = new Tester();
+            Trainee newTrainee = null;
+            Tester newTester = null;
+            if (test.TestDate.DayOfWeek >= DayOfWeek.Friday)
+            {
+                canDoTest = false;
+                exception += "you cant do a test on the weekend";
+            }
+            if(test.TestDate.Hour<9|| test.TestDate.Hour >= 15)
+            {
+                canDoTest = false;
+                exception += "the testers work between 09:00-15:00 only";
+            }
+            if (test.TestDate <= DateTime.Now)
+            {
+                canDoTest = false;
+                exception += "test date must be in the future";
+            }
             foreach (var item in getAllTrainees())//check if trainee is valid for test
             {
                 if (item.id == test.TraineeId)
                 {
                     newTrainee = item;
+                    if (newTrainee.TestDay >= DateTime.Now)
+                    {
+                        canDoTest = false;
+                        exception += "cant set test when you have an upcoming test\n";
+                    }//cant set a test when the trainee already have an upcoming test
                     if (item.TraineeVehicle!=test.TraineeVehicle)
                     {
                         canDoTest = false;
                         exception+="The Trainee is tested on other vehicles\n";
                     }//trainee vehicle is the same as test vehicle
-                    else if (item.TraineeVehicle == test.TraineeVehicle && item.passedTheTest==true)
+                     if (item.passedTheTest==true)
                     {
                         canDoTest = false;
                         exception += "The Trainee has already passed the test\n";
                     }//if the trainee already passed the test
-                    if ((test.TestDateTime - item.TestDay).TotalDays <= Configuration.TEST_TO_TEST_TIME_RANGE)
+                    if ((test.TestDate - item.TestDay).TotalDays <= Configuration.TEST_TO_TEST_TIME_RANGE)
                     {
                         canDoTest = false;
                         exception+="you need to wait 7 days between tests\n";
@@ -150,65 +239,125 @@ namespace MY_BL
                     break;//only one student with matching id in the list
                 }
             }
-            //var arr = getAllTesters().Where(x => x.weekdays[test.TestDateTime.DayOfWeek, test.TestDateTime.Hour]);
-            
+            if (newTrainee == null)
+            {
+                canDoTest = false;
+                throw new Exception( "trainee does not exist\n");
+            }
             foreach (var item in getAllTesters())
             {
-                canDoTest = true;
-                if (!item.weekdays[test.TestDateTime.DayOfWeek, test.TestDateTime.Hour])
+                if (!canDoTest)
                 {
-                    canDoTest = false;
-                    /*try
-                    {
-                        //item.nextAvailableTest();
-                    }
-                    catch(Exception e)
-                    {
-                        exception += "the selected hour is already taken.\n" + e.Message;
-                    }*/
+                    break;
+                }//if you cant do the test it wont look for tester
+                if (!item.weekdays[test.TestDate.DayOfWeek, test.TestDate.Hour])
+                {
+                    continue;
                 }//check if the test hour is not taken
                 if (item.MaxWeeklyTests <= item.weekdays.currentWeeklyTests)
                 {
-                    canDoTest = false;
-                    exception += "passed the max number of tests this week\n";
+                    continue;
                 }//check if the tester passed the max weekly tests 
                 if (newTrainee.TraineeVehicle!=item.TesterVehicle)
                 {
-                    canDoTest = false;
-                    exception += "The tester can test on another type of vehicle";
+                    continue;
                 }//check if the tester test on the trainee vehicle
-                if (canDoTest)
+                if (getDistance(test.TestAdress, item.TesterAdress) > item.MaxDistance)
                 {
-                    newTester = item;
-                    test.TesterId = item.id;
-                    break;
-                }//if the tester is available for testing assign the tester for the test
+                    continue;
+                }//check if the tester is close enough to the test location
+                newTester = item;   //if the tester is available for testing assign the tester for the test
+                test.TesterId = item.id;
+                break;
             }//look for available tester
-
+            if (newTester == null)
+            {
+                canDoTest = false;
+                exception += "no available tester\n";
+            }//check if there was an available tester for the test
             if (canDoTest)
             {
+                ++MY_BE.Configuration.TEST_ID;
+                test.TestNumber = (MY_BE.Configuration.TEST_ID).ToString("00000000");
                 d.addTest(test);
                 newTrainee.TestDay = test.TestDate;
-                newTester.weekdays[test.TestDate.DayOfWeek, test.TestDateTime.Hour] = false;
+                newTester.weekdays[test.TestDate.DayOfWeek, test.TestDate.Hour] = false;
                 newTester.weekdays.currentWeeklyTests++;
+                updateTester(newTester);
+                updateTrainee(newTrainee);
+            }
+            else
+            {
+                throw new Exception(exception);
             }
         }
         public void updateTestOnFinish(MY_BE.Test test)
         {
-            bool canupdatetest = true;
-            bool testpassed = true;
-            foreach(var item in test.TestParams)//check if all testparams was entered false\true
+
+            if (test.TestDate >= DateTime.Now)
             {
-                if (item.Value == null)
+                throw new Exception("the test wasnt conducted yet");
+            }//you cant update test before it started
+            if (getAllTests().Where(x=>x.TestNumber==test.TestNumber&&x.TestParams["distance"] == 0)==null)
+            {
+                throw new Exception("test already checked!");
+            }//check that the test wasn't checked
+            if(getAllTrainees().Where(x => x.id == test.TraineeId).First().passedTheTest == true)
+            {
+                throw new Exception("Trainee already passed the test!");
+            }//check if trainee already passed the test
+            bool canupdatetest = true;
+            string myException="";
+            bool testpassed = true;
+            int sum = 0;
+            
+            foreach (var item in test.TestParams)
+            {
+                if (item.Value == 0)
                 {
                     canupdatetest = false;
+                    myException += "you must rate all the fields\n";
+                    break;
                 }
-            }
+            }//check if the tester rated all relevant fields
+            if (!test.BoolTestParams["stopped"])
+            {
+                testpassed = false;
+            }//if the trainee didnt stop in red light/stop sign, he can't pass the test.
+            else
+            {
+                foreach(var item in test.BoolTestParams)
+                {
+                    if (item.Value == true)
+                    {
+                        sum += 10;
+                    }
+                }
+                foreach(var item in test.TestParams)
+                {
+                    sum += (int)item.Value;
+                }
+                testpassed = (sum >= 65);
+            }//rate the trainee performence in the test and grade him
             if (canupdatetest)
             {
+                Tester tester = getAllTesters().Where(x => x.id == test.TesterId).First();
+                tester.weekdays[test.TestDate.DayOfWeek, test.TestDate.Hour] = true;
+                tester.weekdays.currentWeeklyTests--;
+                updateTester(tester);
                 d.updateTestOnFinish(test);
             }
-        }
+            else
+            {
+                throw new Exception(myException);
+            }
+            if (testpassed)
+            {
+                Trainee trainee = getAllTrainees().Where(x => x.id == test.TraineeId).First();
+                trainee.passedTheTest = true;
+                d.updateTrainee(trainee);
+            }
+        }//update the test and check if the trainee passed
         public List<MY_BE.Tester> getAllTesters()
         {
             return d.getAllTesters();
@@ -221,19 +370,57 @@ namespace MY_BL
         {
             return d.getAllTests();
         }
-        public List<Tester> getNearbyTesters(Adress ad,double x)
+        public List<Tester> getNearbyTesters(Adress ad)
         {
-            List<Tester> tlist=new List<Tester>();
-            double distance = 4;
-            foreach(Tester t in getAllTesters())
+            List<Tester> tlist = new List<Tester>();
+            double x=1000;
+            
+                foreach (Tester t in getAllTesters())
             {
                 //enter gmaps distance to distance
-                if (distance <= x)
+                if (x <= t.MaxDistance)
                 {
                     tlist.Add(t);
                 }
             }
             return tlist;
+        }
+        public double getDistance(Adress adress1,Adress adress2)
+        {
+            double distancInKm=10000;
+            string origin = adress1.ToString(); //or " אחד העם  פתח תקווה 100 " etc. 
+            string destination = adress2.ToString();//or " ז'בוטינסקי  רמת גן 10 " etc. 
+            origin = "pisga 45 st. jerusalem"; //or " אחד העם  פתח תקווה 100 " etc. 
+            destination = "pisga 15 st. jerusalem";//or " ז'בוטינסקי  רמת גן 10 " etc. 
+            string KEY = @"ISksQSO4vXWCZ3fUZygGvdX6CJhZREgS";
+
+            string url = @"https://www.mapquestapi.com/directions/v2/route" + @"?key=" + KEY + @"&from=" + origin + @"&to=" + destination + @"&outFormat=xml" + @"&ambiguities=ignore&routeType=fastest&doReverseGeocode=false" + @"&enhancedNarrative=false&avoidTimedConditions=false";
+
+            //request from MapQuest service the distance between the 2 addresses 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader sreader = new StreamReader(dataStream);
+            string responsereader = sreader.ReadToEnd();
+            response.Close(); //the response is given in an XML format 
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(responsereader);
+
+            if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0") //we have the expected answer 
+            {     //display the returned distance     
+                XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
+                double distInMiles = Convert.ToDouble(distance[0].ChildNodes[0].InnerText);
+                distancInKm = distInMiles * 1.609344;
+            }
+            else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402") //we have an answer that an error occurred, one of the addresses is not found 
+            {
+                throw new Exception("an error occurred, one of the addresses is not found. try again.");
+            }
+            else //busy network or other error... 
+            {
+                throw new Exception("We have'nt got an answer, maybe the net is busy...");
+            }
+            return distancInKm;
         }
         public List<Tester> getTestersAtHour(DateTime dt)
         {
@@ -330,7 +517,7 @@ namespace MY_BL
         public List<Trainee> groupByTestsNumber()
         {
             List<Trainee> tlist = new List<Trainee>();
-            var results = getAllTrainees().GroupBy(item => item);//**need to make tests number field in trainee
+            var results = getAllTrainees().GroupBy(item => item.FamilyName);//**need to make tests number field in trainee
             foreach (IGrouping<string, Trainee> group in results)
             {
                 foreach (Trainee item in group)
@@ -340,17 +527,18 @@ namespace MY_BL
             }
             return tlist;
         }
-        public void addmyTrainees()
+        /*public void addmyTrainees()
         {
-
             int i, y = -19, num = 25, phone = 0500000000, hnum = 18;
             string name = "n", school = "s";
+            char ca = 'a',ca2='z';
+            
             DateTime dt = DateTime.Now.AddYears(y);
             for (i = 0; i < 10; i++)
             {
                 Trainee trainee = new Trainee();
-                trainee.PrivateName = name += "a";
-                trainee.FamilyName = name += "b";
+                trainee.PrivateName = name += ca++; ;
+                trainee.FamilyName = name += ca2--;
                 trainee.BirthDate = dt.AddYears(y--);
                 trainee.DrivingLessonsNumber = num += 2;
                 trainee.DrivingSchool = school += "a";
@@ -408,7 +596,7 @@ namespace MY_BL
                 test.TestAdress.Street = "yafo";
                 test.TestAdress.HouseNumber = hn += 4;
                 test.TestDate = new DateTime(2019,01,15,12,30,0);
-                test.TestDateTime = test.TestDate;
+                test.TestDate = test.TestDate;
                 test.TesterId = teid--;
                 test.TraineeId = trid++;
                 test.TraineeVehicle = VehicleType.PrivateVehicle;
@@ -416,9 +604,12 @@ namespace MY_BL
                 {
                     addTest(test);
                 }
-                catch (Exception e) { }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
-        }
+        }*/
     }
 
 }

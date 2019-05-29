@@ -31,10 +31,19 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bl.addTest(test);
-            Administrator admin = new Administrator();
-            admin.Show();
-            this.Close();
+            TimeSpan ts = new TimeSpan(THourCB.SelectedIndex + 9, 01, 0);
+            test.TestDate -= test.TestDate.TimeOfDay;
+            test.TestDate += ts;
+            try
+            {
+                bl.addTest(test);
+                this.Close();
+            }
+            catch(Exception e1)
+            {
+                MessageBox.Show(e1.Message);
+            }
+            
         }
     }
 }

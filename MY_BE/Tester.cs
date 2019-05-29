@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace MY_BE
 {
@@ -41,16 +42,17 @@ namespace MY_BE
                 return week[d];
             }
         }*/
-        public bool[,] week { get; set; }
+        public bool[][] week { get; set; }
         public int currentWeeklyTests { get; set; }
         public Schedule()
         {
-            week = new bool[7, 6];
-            for(int i = 0; i < 7; i++)
+            week = new bool[5][];
+            for(int i = 0; i < 5; i++)
             {
+                week[i] = new bool[6];
                 for(int j = 0; j < 6; j++)
                 {
-                    week[i, j] = true;
+                    week[i][j] = true;
                 }
             }
             currentWeeklyTests = 0;
@@ -64,11 +66,11 @@ namespace MY_BE
         {
             get
             {
-                return week[(int)dof, h - 9];
+                return week[(int)dof][ h - 9];
             }
             set
             {
-                week[(int)dof, h - 9]=value;
+                week[(int)dof][ h - 9]=value;
             }
         }
         /*public IEnumerator<bool> GetEnumerator()
@@ -82,13 +84,13 @@ namespace MY_BE
                 }
             }
         }*/
-
+        
     }
         public class Tester
     {
         public Tester()
         {
-            id = 0;
+            id = 9999;
             FamilyName = "FamilyName";
             PrivateName = "PrivateName";
             BirthDate = DateTime.Now.AddYears(-41);
@@ -132,6 +134,33 @@ namespace MY_BE
         {
             return "";
         }
+        /*public string XmlWeekdays
+        {
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+                    int sizeA = int.Parse(values[0]);
+                    int sizeB = int.Parse(values[1]);
+                    int index = 2;
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 6; j++)
+                            weekdays.week[i][j] = bool.Parse(values[index++]);
+                }
+            }
+            get
+            {
+                string result = "";
+                    int sizeA = UserMetrix.GetLength(0);
+                    int sizeB = UserMetrix.GetLength(1);
+                    result += "" + sizeA + "," + sizeB;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            result += "," + UserMetrix[i, j];
+                return result;
+            }
+        }*/
         /*public string nextAvailableTest()
         {
             for (DayOfWeek a = DateTime.Today.DayOfWeek; a <= DayOfWeek.Saturday; a++)

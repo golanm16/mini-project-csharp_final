@@ -30,14 +30,21 @@ namespace PLWPF
             traineeGender.ItemsSource = Enum.GetValues(typeof(Gender));
             traineeGearbox.ItemsSource = Enum.GetValues(typeof(GearBox));
             traineeVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
+            birthDate.SelectedDate = DateTime.Now.AddYears(-18);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bl.addTrainee(trainee);
-            Administrator admin = new Administrator();
-            admin.Show();
-            this.Close();
+            
+            try
+            {
+                bl.addTrainee(trainee);
+                this.Close();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message, "ERROR");
+            }
         }
     }
 }

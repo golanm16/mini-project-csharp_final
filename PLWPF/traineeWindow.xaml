@@ -12,7 +12,7 @@
                 <StackPanel  Name="mainGrid">
                     <Label Content="" Name="welcomelabel" FontSize="20"/>
                     <TextBlock Text="" Name="welcomeBlock"/>
-                    <Button Content="info" Click="Button_Click" />
+                    <Button Name="testButton" Content="Last test info" Click="Button_Click" Width="120"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="trainee info">
@@ -40,29 +40,29 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Private Name" Grid.Column="0" />
-                    <TextBox IsEnabled="False" Text="{Binding Path=PrivateName, Mode=TwoWay, ValidatesOnDataErrors=false, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" x:Name="privateName"/>
+                    <TextBox IsEnabled="False" Text="{Binding Path=PrivateName, Mode=TwoWay}" Grid.Column="1" x:Name="privateName"/>
                     <Label Content="Family Name" Grid.Row="1" />
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=FamilyName, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Row="1" Grid.Column="1" x:Name="familyName"/>
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=FamilyName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" x:Name="familyName"/>
                     <Label Content="Trainee Gender" Grid.Row="2" />
                     <ComboBox IsEnabled="False" SelectedItem="{Binding Path=TraineeGender, Mode=TwoWay}" Grid.Column="2" Grid.Row="2" x:Name="traineeGender" />
                     <Label Content="ID" Grid.Row="3"  />
-                    <TextBox IsEnabled="False" Text="{Binding Path=id, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="3"/>
+                    <TextBox IsEnabled="False" Text="{Binding Path=id, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
                     <Label Content="Birth Date" Grid.Row="4" />
-                    <DatePicker IsEnabled="False" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" SelectedDateFormat="Short" Grid.Column="1" Grid.Row="4" x:Name="birthDate"/>
+                    <DatePicker IsEnabled="False" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay}" SelectedDateFormat="Short" Grid.Column="1" Grid.Row="4" x:Name="birthDate"/>
                     <Label Content="phone number" Grid.Row="5"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="5" x:Name="phoneNumber"/>
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=PhoneNumber, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" x:Name="phoneNumber"/>
                     <Label Content="Trainee City" Grid.Row="6"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.City, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="6" x:Name="traineeCity" />
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.City, Mode=TwoWay}" Grid.Column="1" Grid.Row="6" x:Name="traineeCity" />
                     <Label Content="Trainee Street" Grid.Row="7"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.Street, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="7" x:Name="traineeStreet" />
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.Street, Mode=TwoWay}" Grid.Column="1" Grid.Row="7" x:Name="traineeStreet" />
                     <Label Content="Trainee House Number" Grid.Row="8"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.HouseNumber, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="8" x:Name="traineeHouseNumber"  />
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TraineeAdress.HouseNumber, Mode=TwoWay}" Grid.Column="1" Grid.Row="8" x:Name="traineeHouseNumber"  />
                     <Label Content="Teacher Name" Grid.Row="9"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TeacherName, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="9" x:Name="teacherName"  />
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TeacherName, Mode=TwoWay}" Grid.Column="1" Grid.Row="9" x:Name="teacherName"  />
                     <Label Content="Driving School" Grid.Row="10"/>
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=DrivingSchool, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="10" x:Name="drivingSchool" />
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=DrivingSchool, Mode=TwoWay}" Grid.Column="1" Grid.Row="10" x:Name="drivingSchool" />
                     <Label Content="Driving Lessons Number" Grid.Row="11" />
-                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=DrivingLessonsNumber, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="11" x:Name="drivingLessonsNumber"/>
+                    <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=DrivingLessonsNumber, Mode=TwoWay}" Grid.Column="1" Grid.Row="11" x:Name="drivingLessonsNumber"/>
                     <Label Content="Trainee Gearbox" Grid.Row="12" />
                     <ComboBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" SelectedItem="{Binding Path=TraineeGearbox, Mode=TwoWay}" Grid.Column="2" Grid.Row="12" x:Name="traineeGearbox" />
                     <Label Content="Trainee Vehicle" Grid.Row="13" />

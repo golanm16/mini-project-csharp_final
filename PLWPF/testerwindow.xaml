@@ -5,30 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="testerwindow" Height="450" Width="800">
+        Title="testerwindow" Height="450" Width="700">
     <Grid>
-        <Grid.ColumnDefinitions  >
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Name="testblock">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="6*"/>
-            </Grid.RowDefinitions>
-            <Label  Content="Welcome to your user management, " FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Label Content="to check test enter test id:" Height="40" Grid.Row="1"/>
-            <TextBox x:Name="testIdBox" Text="00000001" HorizontalAlignment="Center" Height="40" Grid.Row="1" PreviewKeyUp="tib_Enter_Pressed"/>
-            <Button Content="submit" HorizontalAlignment="Right" Height="40" Click="Button_Click" Grid.Row="1" Name="submitButton"/>
-            
-        </Grid>
-        <Grid Grid.Column="1" Name="schedulegrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-            <Label Content="scheduele here!"/>
-        </Grid>
+        <TabControl>
+            <TabItem Header="Main">
+                <Grid>
+                    <Grid.ColumnDefinitions  >
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="3.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Name="testblock">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Welcome to your user management, " FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Name="welcomeLabel"/>
+                        <Label Content="choose test to check:" Height="40" Grid.Row="1"/>
+                        <ComboBox x:Name="testIdComboBox"  HorizontalAlignment="Center" Width="120" Height="40" Grid.Row="1" PreviewKeyUp="tib_Enter_Pressed"/>
+                        <Button Content="submit" HorizontalAlignment="Right" Height="40" Click="submitButtonClick" Grid.Row="1" Name="submitButton"/>
+
+                    </Grid>
+                    <Grid Grid.Column="1"  Name="schedulegrid">
+                        <DataGrid CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="All" ItemsSource="{Binding}"  Name="scheduledatagrid" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Test number"  Binding="{Binding Path=TestNumber}"/>
+                                <DataGridTextColumn Header="Location"  Binding="{Binding Path=TestAdress}"/>
+                                <DataGridTextColumn Header="test date and hour" Binding="{Binding Path=TestDate}"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="info">
+                <Border BorderThickness="1" BorderBrush="Gray" Padding="10" CornerRadius="10">
+                    <Grid  x:Name="testerinfogrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition Width="25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Private Name" />
+                            <TextBox IsEnabled="False" Text="{Binding Path=PrivateName, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" x:Name="privateName" />
+                            <Label Content="Family Name" Grid.Row="1" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=FamilyName, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" x:Name="familyName" />
+                            <Label Content="Id" Grid.Row="2" />
+                            <TextBox IsEnabled="False" Text="{Binding Path=id, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" x:Name="id" />
+                            <Label Content="Tester Gender" Grid.Row="3" />
+                            <ComboBox IsEnabled="False" Text="{Binding Path=TesterGender, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" x:Name="testerGender" />
+                            <Label Content="Birth Date" Grid.Row="4" />
+                            <DatePicker IsEnabled="False" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay}" SelectedDateFormat="Short" Grid.Column="1" Grid.Row="4" x:Name="birthDate" />
+                            <Label Content="Tester Vehicle" Grid.Row="5" />
+                            <ComboBox IsEnabled="False" SelectedItem="{Binding Path=TesterVehicle, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" x:Name="testerVehicle" />
+                            <Label Content="Seniority" Grid.Row="6" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=Seniority, Mode=TwoWay}" Grid.Column="1" Grid.Row="6" x:Name="seniority" />
+                            <Label Content="Phone Number" Grid.Row="7" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=PhoneNumber, Mode=TwoWay}" Grid.Column="1" Grid.Row="7" x:Name="phoneNumber" />
+                            <Label Content="Max Distance" Grid.Row="8" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=MaxDistance, Mode=TwoWay}" Grid.Column="1" Grid.Row="8" x:Name="maxDistance" />
+                            <Label Content="Max Weekly Tests" Grid.Row="9" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=MaxWeeklyTests, Mode=TwoWay}" Grid.Column="1" Grid.Row="9" x:Name="maxWeeklyTests" />
+                            <Label Content="City" Grid.Row="10" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TesterAdress.City, Mode=TwoWay}"  Grid.Column="1" Grid.Row="10" x:Name="adress_City" />
+                            <Label Content="Street Name" Grid.Row="11" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TesterAdress.Street, Mode=TwoWay}" Grid.Column="1" Grid.Row="11" x:Name="adress_Street" />
+                            <Label Content="House Number" Grid.Row="12" />
+                            <TextBox IsEnabled="{Binding ElementName=privateName, Path=IsEnabled}" Text="{Binding Path=TesterAdress.HouseNumber, Mode=TwoWay}" Grid.Column="1" Grid.Row="12" x:Name="adress_HouseNumber" />
+                            <Button Content="edit info" Grid.Row="13" Grid.Column="1" Click="editInfo" Name="testerButton"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

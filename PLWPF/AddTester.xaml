@@ -63,12 +63,12 @@
                     <Label Content="Max Weekly Tests" Grid.Row="9" />
                     <TextBox Text="{Binding Path=MaxWeeklyTests, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="9" x:Name="maxWeeklyTests" />
                     <Label Content="City" Grid.Row="10" />
-                    <TextBox Text="{Binding Path=TesterAdress.City, Mode=TwoWay}" IsEnabled="False" Grid.Column="1" Grid.Row="10" x:Name="adress_City" />
+                    <TextBox Text="{Binding Path=TesterAdress.City, Mode=OneWayToSource}"  Grid.Column="1" Grid.Row="10" x:Name="adress_City" />
                     <Label Content="Street Name" Grid.Row="11" />
                     <TextBox Text="{Binding Path=TesterAdress.Street, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="11" x:Name="adress_Street" />
                     <Label Content="House Number" Grid.Row="12" />
                     <TextBox Text="{Binding Path=TesterAdress.HouseNumber, Mode=OneWayToSource}" Grid.Column="1" Grid.Row="12" x:Name="adress_HouseNumber" />
-                    <Button Content="add tester" Grid.Row="13" Grid.Column="1" Click="Button_Click"/>
+                    <Button Content="add tester" Grid.Row="13" Grid.Column="1" Click="Add_Tester_Button" Name="testerButton"/>
                 </Grid>
             </Grid>
         </Border>

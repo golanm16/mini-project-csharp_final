@@ -27,3 +27,14 @@ C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.dll
 C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\DS.pdb
 C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.pdb
 C:\Users\Golan\source\repos\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CopyComplete
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\MY_DAL.dll
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\MY_DAL.pdb
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\DS.dll
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.dll
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\DS.pdb
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\bin\Debug\MY_BE.pdb
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csprojAssemblyReference.cache
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CoreCompileInputs.cache
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.csproj.CopyComplete
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.dll
+D:\downloads\telegram\mini-project-lvl1\MY_DAL\obj\Debug\MY_DAL.pdb

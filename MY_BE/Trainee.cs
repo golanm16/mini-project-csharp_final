@@ -11,7 +11,7 @@ namespace MY_BE
         public Trainee()
         {
             TestDay = DateTime.Now.AddYears(-20);
-            id = 0;
+            id = 9999;
             FamilyName = "FamilyName";
             PrivateName = "PrivateName";
             BirthDate = DateTime.Now.AddYears(-19);

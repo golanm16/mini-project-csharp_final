@@ -27,37 +27,62 @@ namespace PLWPF
             tester = t;
             InitializeComponent();
             this.Closing += this.On_Closed;
-            //schedulegrid.Children.Clear();
-            //testerSchedule ts = new testerSchedule(tester);
+            List<Test> my_tests = bl.getAllTests().Where(x => x.TesterId == tester.id).ToList();
+            scheduledatagrid.ItemsSource = my_tests.Where(x=>x.TestDate>=DateTime.Now);
+            testIdComboBox.ItemsSource = my_tests.Where(x=> x.TestDate <= DateTime.Now&&x.TestParams["distance"]  ==0).Select(x => x.TestNumber);
+            welcomeLabel.Content = welcomeLabel.Content+tester.FamilyName+" "+ tester.PrivateName;
+            testerGender.ItemsSource = Enum.GetValues(typeof(Gender));
+            testerVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
+            testerinfogrid.DataContext = tester;
         }
 
         private void On_Closed(Object sender,System.ComponentModel.CancelEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            
-        }
+        }//when pressing x open the main window
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void submitButtonClick(object sender, RoutedEventArgs e)
         {
-            int id;
-            if (int.TryParse(testIdBox.Text, out id))
+            if (testIdComboBox.SelectedItem != null)
             {
-                Test test = bl.getAllTests().Where(x => x.TestNumber == id.ToString("00000000")).First();
+                Test test = bl.getAllTests().Where(x => x.TestNumber == testIdComboBox.SelectedItem.ToString()).FirstOrDefault();
                 testUpdateWindow testUp = new testUpdateWindow(test);
                 testUp.ShowDialog();
             }
             else
             {
-                MessageBox.Show("must enter a number in id field!", "Error!");
+                MessageBox.Show("test doesn't exist", "ERROR!");
             }
-        }
+        }//update test grading on pervious tests
 
         private void tib_Enter_Pressed(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                Button_Click(this, new RoutedEventArgs());
+                submitButtonClick(this, new RoutedEventArgs());
+            }
+        }
+        public void editInfo(object sender, RoutedEventArgs e)
+        {
+            testerButton.Content = "update Details";
+            testerButton.Click -= editInfo;
+            testerButton.Click += updateDetails;
+            privateName.IsEnabled = true;
+        }
+        public void updateDetails(object sender, RoutedEventArgs e)
+        {
+            testerButton.Content = "edit Info";
+            testerButton.Click -= updateDetails;
+            testerButton.Click += editInfo;
+            privateName.IsEnabled = false;
+            try
+            {
+                bl.updateTester(tester);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("tester info couldn't be updated due to:\n" + e1.Message);
             }
         }
     }

@@ -61,15 +61,11 @@
     <Compile Include="addTrainee.xaml.cs">
       <DependentUpon>addTrainee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BoolToColorConverter.cs" />
-    <Compile Include="testerSchedule.xaml.cs">
-      <DependentUpon>testerSchedule.xaml</DependentUpon>
+    <Compile Include="RemoveWindow.xaml.cs">
+      <DependentUpon>RemoveWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="testerwindow.xaml.cs">
       <DependentUpon>testerwindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="testUpdateUserControl.xaml.cs">
-      <DependentUpon>testUpdateUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="testUpdateWindow.xaml.cs">
       <DependentUpon>testUpdateWindow.xaml</DependentUpon>
@@ -111,15 +107,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="testerSchedule.xaml">
+    <Page Include="RemoveWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="testerwindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="testUpdateUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

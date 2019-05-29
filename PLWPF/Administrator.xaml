@@ -12,31 +12,64 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="file">
-                <MenuItem Header="save"/>
-                <MenuItem/>
-                <MenuItem/>
-                <MenuItem Header="return to main window" Click="MenuItem_Click"/>
-            </MenuItem>
             <MenuItem Header="add">
-                <MenuItem Header="test" Click="MenuItem_Click_3" />
-                <MenuItem Header="tester" Click="MenuItem_Click_1" />
-                <MenuItem Header="trainee" Click="MenuItem_Click_2" />
+                <MenuItem Header="test" Click="add_test" />
+                <MenuItem Header="tester" Click="add_tester" />
+                <MenuItem Header="trainee" Click="add_trainee" />
+            </MenuItem>
+            <MenuItem Header="remove">
+                <MenuItem Header="tester" Click="Remove_tester"/>
+                <MenuItem Header="trainee" Click="Remove_trainee"/>
             </MenuItem>
             
         </Menu>
         <TabControl Grid.Row="1">
-            <TabItem Header="test list">
-                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
-                     x:Name="tests_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            <TabItem Header="test list" PreviewMouseUp="add_tests">
+                <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                     x:Name="tests_list" VerticalAlignment="Top" RowHeight="30" ColumnWidth="100" ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Test Number" Binding="{Binding Path=TestNumber}"/>
+                        <DataGridTextColumn Header="Trainee id" Binding="{Binding Path=TraineeId}"/>
+                        <DataGridTextColumn Header="Tester id" Binding="{Binding Path=TesterId}"/>
+                        <DataGridTextColumn Header="Test Vehicle" Binding="{Binding Path=TraineeVehicle}"/>
+                        <DataGridTextColumn Header="Date" Width="130" Binding="{Binding Path=TestDate}"/>
+                        <DataGridTextColumn Header="Adress" Binding="{Binding Path=TestAdress}"/>
+                        <DataGridTextColumn Header="Tester Notes" Binding="{Binding Path=TesterNote}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
-            <TabItem Header="testers list">
-                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
-                     x:Name="testers_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            <TabItem Header="testers list" Height="22" Margin="-1.745,-2,-1.8,0" VerticalAlignment="Top" PreviewMouseUp="add_testers">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Grid.Row="1" Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                         x:Name="testers_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=id}"/>
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path=FamilyName}"/>
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path=PrivateName}"/>
+                            <DataGridTextColumn Header="Birthe Date" Binding="{Binding Path=BirthDate }"/>
+                            <DataGridTextColumn Header="Gender" Binding="{Binding Path=TesterGender }"/>
+                            <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber }"/>
+                            <DataGridTextColumn Header="Adress" Binding="{Binding Path=TesterAdress }"/>
+                            <DataGridTextColumn Header="Seniority" Binding="{Binding Path=Seniority }"/>
+                            <DataGridTextColumn Header="Max tests" Binding="{Binding Path=MaxWeeklyTests }"/>
+                            <DataGridTextColumn Header="Vehicle" Binding="{Binding Path=TesterVehicle }"/>
+                            <DataGridTextColumn Header="Max Distance" Binding="{Binding Path=MaxDistance }"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
-            <TabItem Header="trainee list">
-                <DataGrid Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
-                     x:Name="trainees_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}"/>
+            <TabItem Header="trainee list" PreviewMouseUp="add_trainees">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Grid.Row="1" Height="auto" Width="auto" HorizontalAlignment="Left" Margin="12,21,0,0"   
+                     x:Name="trainees_list" VerticalAlignment="Top" RowHeight="40" ColumnWidth="100" ItemsSource="{Binding}">
+                    </DataGrid>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

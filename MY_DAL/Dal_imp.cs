@@ -24,15 +24,18 @@ namespace MY_DAL
         }
         public void updateTester(MY_BE.Tester tester)
         {
+            MY_BE.Tester t = new MY_BE.Tester();
             foreach(MY_BE.Tester item in DS.DataSource.testersList)
             {
                 if (item.id == tester.id)
                 {
-                    DS.DataSource.testersList.Remove(item);
-                    DS.DataSource.testersList.Add(tester);
+                    t = item;
+                    
                     break;
                 }
             }
+            DS.DataSource.testersList.Remove(t);
+            DS.DataSource.testersList.Add(tester);
         }
         public void addTrainee(MY_BE.Trainee trainee)
         {
@@ -44,33 +47,37 @@ namespace MY_DAL
         }
         public void updateTrainee(MY_BE.Trainee trainee)
         {
+            MY_BE.Trainee t = new MY_BE.Trainee();
             foreach (MY_BE.Trainee item in DS.DataSource.traineesList)
             {
                 if (item.id == trainee.id)
                 {
-                    DS.DataSource.traineesList.Remove(trainee);
-                    DS.DataSource.traineesList.Add(trainee);
+                    t = item;
                     break;
                 }
             }
+            DS.DataSource.traineesList.Remove(t);
+            DS.DataSource.traineesList.Add(trainee);
         }
          
         public void addTest(MY_BE.Test test)
         {
-            test.TestNumber = (MY_BE.Configuration.TEST_ID++).ToString("00000000");
+            
             DS.DataSource.testsList.Add(test);
         }
         public void updateTestOnFinish(MY_BE.Test test)
         {
+            MY_BE.Test t = new MY_BE.Test();
             foreach(MY_BE.Test item in DS.DataSource.testsList)
             {
                 if (item.TestNumber == test.TestNumber)
                 {
-                    DS.DataSource.testsList.Remove(item);
-                    DS.DataSource.testsList.Add(test);
+                    t = item;
                     break;
                 }
             }
+            DS.DataSource.testsList.Remove(t);
+            DS.DataSource.testsList.Add(test);
         }
         public List<MY_BE.Tester> getAllTesters()
         {

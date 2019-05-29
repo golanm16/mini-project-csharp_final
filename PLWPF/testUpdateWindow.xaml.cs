@@ -26,11 +26,16 @@ namespace PLWPF
         {
             testcontrol = test;
             InitializeComponent();
-            testUpdateGrid.DataContext = test;
+            testUpdateGrid.DataContext = testcontrol;
             par1.ItemsSource = Enum.GetValues(typeof(Rating));
             par2.ItemsSource = Enum.GetValues(typeof(Rating));
             par3.ItemsSource = Enum.GetValues(typeof(Rating));
             par4.ItemsSource = Enum.GetValues(typeof(Rating));
+            par5.ItemsSource = Enum.GetValues(typeof(Rating));
+            par6.ItemsSource = Enum.GetValues(typeof(Rating));
+            par7.ItemsSource = Enum.GetValues(typeof(Rating));
+            par8.ItemsSource = Enum.GetValues(typeof(Rating));
+            par9.ItemsSource = Enum.GetValues(typeof(Rating));
         }
 
         private void Submit_test(object sender, RoutedEventArgs e)
@@ -38,9 +43,11 @@ namespace PLWPF
             try
             {
                 bl.updateTestOnFinish(testcontrol);
-            }catch(Exception e1)
+            }
+            catch (Exception e1)
             {
                 MessageBox.Show(e1.Message, "ERROR!");
+                return;
             }
             this.Close();
         }

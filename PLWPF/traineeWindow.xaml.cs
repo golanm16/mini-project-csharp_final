@@ -29,17 +29,18 @@ namespace PLWPF
             if (t.passedTheTest)
             {
                 welcomeBlock.Text = "Congratulations! you passed the test on " +t.TraineeGearbox+ " " + t.TraineeVehicle ;
-            }
+            }//if the trainee passed
             else
             {
                 if (t.TestDay < DateTime.Now)
                 {
                     welcomeBlock.Text = "you haven't passed the test yet on "  + t.TraineeGearbox + " " + t.TraineeVehicle;
-                }
+                }//if the traine didn't pass the test
                 else
                 {
                     welcomeBlock.Text = "your next test is on: " + t.TestDay.ToString();
-                }
+                    testButton.Visibility = Visibility.Hidden;
+                }//if he has a test in the future
             }
             trainee = t;
             addtraineegrid.DataContext = trainee;
@@ -80,11 +81,11 @@ namespace PLWPF
         {
             foreach (var item in bl.getAllTests())
             {
-                if (item.TraineeId == trainee.id && item.TraineeVehicle == trainee.TraineeVehicle)
+                if (item.TraineeId == trainee.id)
                 {
-                    testUpdateUserControl newtest = new testUpdateUserControl(item);
-                    mainGrid.Children.Clear();
-                    mainGrid.Children.Add(newtest);
+                    testUpdateWindow newtest = new testUpdateWindow(item);
+                    newtest.IsEnabled = false;
+                    newtest.ShowDialog();
                     break;
                 }
             }

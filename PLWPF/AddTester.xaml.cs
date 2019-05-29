@@ -29,14 +29,22 @@ namespace PLWPF
             addtestergrid.DataContext = tester;
             testerGender.ItemsSource= Enum.GetValues(typeof(Gender));
             testerVehicle.ItemsSource= Enum.GetValues(typeof(VehicleType));
+            birthDate.SelectedDate = DateTime.Now.AddYears(-40);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Add_Tester_Button(object sender, RoutedEventArgs e)
         {
-            bl.addTester(tester);
-            Administrator admin = new Administrator();
-            admin.Show();
-            this.Close();
+            try
+            {
+                bl.addTester(tester);
+                this.Close();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message, "ERROR");
+            }
+            
         }
+        
     }
 }

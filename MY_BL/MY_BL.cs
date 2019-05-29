@@ -20,7 +20,7 @@ namespace MY_BL
         List<Tester> getAllTesters();
         List<Trainee> getAllTrainees();
         List<Test> getAllTests();
-        List<Tester> getNearbyTesters(Adress ad, double x);
+        List<Tester> getNearbyTesters(Adress ad);
         List<Tester> getTestersAtHour(DateTime dt);
         int numOfTests(Trainee trainee);
         bool passedTheTest(Trainee trtrainee);
@@ -29,8 +29,8 @@ namespace MY_BL
         List<Trainee> groupByDrivingSchool();
         List<Trainee> groupByTester();
         List<Trainee> groupByTestsNumber();
-        void addmyTrainees();
+        /*void addmyTrainees();
         void addmyTesters();
-        void addmytests();
+        void addmytests();*/
     }
 }
