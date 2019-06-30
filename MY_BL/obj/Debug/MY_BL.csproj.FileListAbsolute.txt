@@ -39,3 +39,14 @@ D:\downloads\telegram\mini-project-lvl1\MY_BL\obj\Debug\MY_BL.csproj.CoreCompile
 D:\downloads\telegram\mini-project-lvl1\MY_BL\obj\Debug\MY_BL.csproj.CopyComplete
 D:\downloads\telegram\mini-project-lvl1\MY_BL\obj\Debug\MY_BL.dll
 D:\downloads\telegram\mini-project-lvl1\MY_BL\obj\Debug\MY_BL.pdb
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_BL.dll
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_BL.pdb
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_BE.dll
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_DAL.dll
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_BE.pdb
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\MY_DAL.pdb
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.csprojAssemblyReference.cache
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.csproj.CoreCompileInputs.cache
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.csproj.CopyComplete
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.dll
+C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.pdb
