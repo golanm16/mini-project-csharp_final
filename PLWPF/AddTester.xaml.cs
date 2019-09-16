@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
+using BL;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MY_BE;
-using MY_BL;
 
 namespace PLWPF
 {
@@ -27,8 +16,8 @@ namespace PLWPF
         {
             InitializeComponent();
             addtestergrid.DataContext = tester;
-            testerGender.ItemsSource= Enum.GetValues(typeof(Gender));
-            testerVehicle.ItemsSource= Enum.GetValues(typeof(VehicleType));
+            testerGender.ItemsSource = Enum.GetValues(typeof(Gender));
+            testerVehicle.ItemsSource = Enum.GetValues(typeof(VehicleType));
             birthDate.SelectedDate = DateTime.Now.AddYears(-40);
         }
 
@@ -43,8 +32,8 @@ namespace PLWPF
             {
                 MessageBox.Show(e1.Message, "ERROR");
             }
-            
+
         }
-        
+
     }
 }

@@ -1,54 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace MY_DAL
+﻿using System.Collections.Generic;
+namespace DAL
 {
-    public class Dal_imp:Idal
+    public class Dal_imp : Idal
     {
         public Dal_imp()
         {
-            DS.DataSource.testersList = new List<MY_BE.Tester>();
-            DS.DataSource.testsList = new List<MY_BE.Test>();
-            DS.DataSource.traineesList = new List<MY_BE.Trainee>();
+            DS.DataSource.testersList = new List<BE.Tester>();
+            DS.DataSource.testsList = new List<BE.Test>();
+            DS.DataSource.traineesList = new List<BE.Trainee>();
         }
         public int testid;
-        public void addTester(MY_BE.Tester tester)
+        public void addTester(BE.Tester tester)
         {
             DS.DataSource.testersList.Add(tester);
         }
-        public void removeTester(MY_BE.Tester tester)
+        public void removeTester(BE.Tester tester)
         {
             DS.DataSource.testersList.Remove(tester);
         }
-        public void updateTester(MY_BE.Tester tester)
+        public void updateTester(BE.Tester tester)
         {
-            MY_BE.Tester t = new MY_BE.Tester();
-            foreach(MY_BE.Tester item in DS.DataSource.testersList)
+            BE.Tester t = new BE.Tester();
+            foreach (BE.Tester item in DS.DataSource.testersList)
             {
                 if (item.id == tester.id)
                 {
                     t = item;
-                    
+
                     break;
                 }
             }
             DS.DataSource.testersList.Remove(t);
             DS.DataSource.testersList.Add(tester);
         }
-        public void addTrainee(MY_BE.Trainee trainee)
+        public void addTrainee(BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Add(trainee);
         }
-        public void removeTrainee(MY_BE.Trainee trainee)
+        public void removeTrainee(BE.Trainee trainee)
         {
             DS.DataSource.traineesList.Remove(trainee);
         }
-        public void updateTrainee(MY_BE.Trainee trainee)
+        public void updateTrainee(BE.Trainee trainee)
         {
-            MY_BE.Trainee t = new MY_BE.Trainee();
-            foreach (MY_BE.Trainee item in DS.DataSource.traineesList)
+            BE.Trainee t = new BE.Trainee();
+            foreach (BE.Trainee item in DS.DataSource.traineesList)
             {
                 if (item.id == trainee.id)
                 {
@@ -59,16 +55,16 @@ namespace MY_DAL
             DS.DataSource.traineesList.Remove(t);
             DS.DataSource.traineesList.Add(trainee);
         }
-         
-        public void addTest(MY_BE.Test test)
+
+        public void addTest(BE.Test test)
         {
-            
+
             DS.DataSource.testsList.Add(test);
         }
-        public void updateTestOnFinish(MY_BE.Test test)
+        public void updateTestOnFinish(BE.Test test)
         {
-            MY_BE.Test t = new MY_BE.Test();
-            foreach(MY_BE.Test item in DS.DataSource.testsList)
+            BE.Test t = new BE.Test();
+            foreach (BE.Test item in DS.DataSource.testsList)
             {
                 if (item.TestNumber == test.TestNumber)
                 {
@@ -79,15 +75,15 @@ namespace MY_DAL
             DS.DataSource.testsList.Remove(t);
             DS.DataSource.testsList.Add(test);
         }
-        public List<MY_BE.Tester> getAllTesters()
+        public List<BE.Tester> getAllTesters()
         {
             return DS.DataSource.testersList;
         }    //**need to return a copy. not areference that can change the source
-        public List<MY_BE.Trainee> getAllTrainees()
+        public List<BE.Trainee> getAllTrainees()
         {
             return DS.DataSource.traineesList;
         }  //**need to return a copy. not areference that can change the source
-        public List<MY_BE.Test> getAllTests()
+        public List<BE.Test> getAllTests()
         {
             return DS.DataSource.testsList;
         }        //**need to return a copy. not areference that can change the source

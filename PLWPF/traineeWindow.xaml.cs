@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
+using BL;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MY_BE;
-using MY_BL;
 namespace PLWPF
 {
     /// <summary>
@@ -28,13 +17,13 @@ namespace PLWPF
             welcomelabel.Content = "Welcome! " + t.PrivateName + " " + t.FamilyName;
             if (t.passedTheTest)
             {
-                welcomeBlock.Text = "Congratulations! you passed the test on " +t.TraineeGearbox+ " " + t.TraineeVehicle ;
+                welcomeBlock.Text = "Congratulations! you passed the test on " + t.TraineeGearbox + " " + t.TraineeVehicle;
             }//if the trainee passed
             else
             {
                 if (t.TestDay < DateTime.Now)
                 {
-                    welcomeBlock.Text = "you haven't passed the test yet on "  + t.TraineeGearbox + " " + t.TraineeVehicle;
+                    welcomeBlock.Text = "you haven't passed the test yet on " + t.TraineeGearbox + " " + t.TraineeVehicle;
                 }//if the traine didn't pass the test
                 else
                 {
@@ -71,9 +60,10 @@ namespace PLWPF
             try
             {
                 bl.updateTrainee(trainee);
-            }catch(Exception e1)
+            }
+            catch (Exception e1)
             {
-                MessageBox.Show("trainee info couldn't be updated due to:\n"+e1.Message);
+                MessageBox.Show("trainee info couldn't be updated due to:\n" + e1.Message);
             }
         }
 
@@ -89,7 +79,7 @@ namespace PLWPF
                     break;
                 }
             }
-            
+
         }
     }
 }

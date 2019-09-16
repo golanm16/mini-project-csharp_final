@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
+using BL;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MY_BE;
-using MY_BL;
 namespace PLWPF
 {
     /// <summary>
@@ -21,7 +10,7 @@ namespace PLWPF
     public partial class testUpdateWindow : Window
     {
         IBL bl = FactoryBL.GetInstance();
-        MY_BE.Test testcontrol = new MY_BE.Test();
+        BE.Test testcontrol = new BE.Test();
         public testUpdateWindow(Test test)
         {
             testcontrol = test;

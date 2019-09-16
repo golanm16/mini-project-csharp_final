@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MY_BE
+namespace BE
 {
     public class Trainee
     {
@@ -29,8 +25,8 @@ namespace MY_BE
         public Trainee(Trainee trainee)
         {
             id = trainee.id;
-            FamilyName=trainee.FamilyName;
-            PrivateName=trainee.PrivateName;
+            FamilyName = trainee.FamilyName;
+            PrivateName = trainee.PrivateName;
             BirthDate = trainee.BirthDate;
             TraineeGender = trainee.TraineeGender;
             PhoneNumber = trainee.PhoneNumber;
