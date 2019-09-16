@@ -20,9 +20,3 @@ D:\downloads\telegram\mini-project-lvl1\MY_BE\obj\Debug\MY_BE.csprojAssemblyRefe
 D:\downloads\telegram\mini-project-lvl1\MY_BE\obj\Debug\MY_BE.csproj.CoreCompileInputs.cache
 D:\downloads\telegram\mini-project-lvl1\MY_BE\obj\Debug\MY_BE.dll
 D:\downloads\telegram\mini-project-lvl1\MY_BE\obj\Debug\MY_BE.pdb
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\bin\Debug\MY_BE.dll
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\bin\Debug\MY_BE.pdb
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\obj\Debug\MY_BE.csprojAssemblyReference.cache
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\obj\Debug\MY_BE.csproj.CoreCompileInputs.cache
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\obj\Debug\MY_BE.dll
-C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BE\obj\Debug\MY_BE.pdb
