@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BE;
+using BL;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MY_BE;
-using MY_BL;
 namespace PLWPF
 {
     /// <summary>
@@ -24,7 +15,7 @@ namespace PLWPF
         public RemoveWindow(object obj)
         {
             InitializeComponent();
-            if(obj.GetType()==new Tester().GetType())
+            if (obj.GetType() == new Tester().GetType())
             {
                 removeButton.Content = "remove tester";
                 removeButton.Click += removeTester_Click;
@@ -95,11 +86,11 @@ namespace PLWPF
         {
             if (e.Key == Key.Enter)
             {
-                if(removeButton.Content.ToString()== "remove tester")
+                if (removeButton.Content.ToString() == "remove tester")
                 {
                     removeTester_Click(sender, new RoutedEventArgs());
                 }
-                else if(removeButton.Content.ToString()== "remove trainee")
+                else if (removeButton.Content.ToString() == "remove trainee")
                 {
                     removeTrainee_Click(sender, new RoutedEventArgs());
                 }

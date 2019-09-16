@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml;
 using System.Xml.Serialization;
 
-namespace MY_BE
+namespace BE
 {
 
     public class Test
@@ -61,8 +56,8 @@ namespace MY_BE
         //params for careful driving, stopping at stop sign,etc...
 
         public string TesterNote { get; set; }
-        
-        
+
+
         public string ToString()
         {
             return "";

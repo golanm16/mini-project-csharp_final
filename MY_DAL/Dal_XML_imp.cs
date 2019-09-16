@@ -1,15 +1,12 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
-using System.Xml.Linq;
 using System.IO;
-using System.Threading.Tasks;
-using MY_BE;
-using System.Xml;
+using System.Linq;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
-namespace MY_DAL
+namespace DAL
 {
     class Dal_XML_imp : Idal
     {
@@ -33,7 +30,7 @@ namespace MY_DAL
             }
             else
             {
-                configroot = new XElement("config",new XElement("TEST_ID",Configuration.TEST_ID));
+                configroot = new XElement("config", new XElement("TEST_ID", Configuration.TEST_ID));
                 configroot.Save(configpath);
             }
             if (File.Exists(testerspath))
@@ -50,7 +47,7 @@ namespace MY_DAL
             if (File.Exists(testspath))
             {
                 testsroot = XElement.Load(testspath);
-                foreach(var el in testsroot.Elements())
+                foreach (var el in testsroot.Elements())
                 {
                     tests.Add(XmlToTest(el));
                 }
@@ -73,22 +70,22 @@ namespace MY_DAL
                 trainees = new List<Trainee>();
             }
         }
-        public void addTester(MY_BE.Tester tester)
+        public void addTester(BE.Tester tester)
         {
             testers.Add(tester);
             SaveToXML(testers, testerspath);
         }
-        public void removeTester(MY_BE.Tester tester)
+        public void removeTester(BE.Tester tester)
         {
             testers = LoadFromXML<List<Tester>>(testerspath);
             testers.Remove(tester);
             SaveToXML(testers, testerspath);
         }
-        public void updateTester(MY_BE.Tester tester)
+        public void updateTester(BE.Tester tester)
         {
             testers = LoadFromXML<List<Tester>>(testerspath);
             Tester t = new Tester();
-            foreach (MY_BE.Tester item in testers)
+            foreach (BE.Tester item in testers)
             {
                 if (item.id == tester.id)
                 {
@@ -101,22 +98,22 @@ namespace MY_DAL
             testers.Add(tester);
             SaveToXML(testers, testerspath);
         }
-        public void addTrainee(MY_BE.Trainee trainee)
+        public void addTrainee(BE.Trainee trainee)
         {
             trainees.Add(trainee);
             SaveToXML(trainees, traineespath);
         }
-        public void removeTrainee(MY_BE.Trainee trainee)
+        public void removeTrainee(BE.Trainee trainee)
         {
             trainees = LoadFromXML<List<Trainee>>(traineespath);
             trainees.Remove(trainee);
             SaveToXML(trainees, traineespath);
         }
-        public void updateTrainee(MY_BE.Trainee trainee)
+        public void updateTrainee(BE.Trainee trainee)
         {
             trainees = LoadFromXML<List<Trainee>>(traineespath);
             Trainee t = new Trainee();
-            foreach(Trainee item in trainees)
+            foreach (Trainee item in trainees)
             {
                 if (item.id == trainee.id)
                 {
@@ -127,32 +124,32 @@ namespace MY_DAL
             trainees.Add(trainee);
             SaveToXML(trainees, traineespath);
         }
-        public void addTest(MY_BE.Test test)
+        public void addTest(BE.Test test)
         {
             tests.Add(test);
             testsroot = XElement.Load(testspath);
             XElement xelement = new XElement("test",
                                     new XElement("TesterId", test.TesterId),
                                     new XElement("TraineeId", test.TraineeId),
-                                    new XElement("TestAdress", 
-                                    new XElement("City",test.TestAdress.City),
+                                    new XElement("TestAdress",
+                                    new XElement("City", test.TestAdress.City),
                                     new XElement("Street", test.TestAdress.Street),
                                     new XElement("HouseNumber", test.TestAdress.HouseNumber)),
                                     new XElement("TesterNote", test.TesterNote),
                                     new XElement("TestNumber", test.TestNumber),
                                     new XElement("TraineeVehicle", test.TraineeVehicle),
                                     new XElement("TestDate", test.TestDate),
-                                    new XElement("BoolTestParams", test.BoolTestParams.Select(x => new XElement("dict", 
-                                    new XElement("Key", x.Key),new XElement("Value",x.Value)))),
+                                    new XElement("BoolTestParams", test.BoolTestParams.Select(x => new XElement("dict",
+                                    new XElement("Key", x.Key), new XElement("Value", x.Value)))),
                                     new XElement("TestParams", test.TestParams.Select(x => new XElement("dict",
                                     new XElement("Key", x.Key), new XElement("Value", x.Value))))
                             );
             testsroot.Add(xelement);
             testsroot.Save(testspath);
-            configroot=new XElement("config",new XElement("TEST_ID", Configuration.TEST_ID));
+            configroot = new XElement("config", new XElement("TEST_ID", Configuration.TEST_ID));
             configroot.Save(configpath);
         }
-        public void updateTestOnFinish(MY_BE.Test test)
+        public void updateTestOnFinish(BE.Test test)
         {
             Test t = new Test();
             foreach (Test item in tests)
@@ -166,7 +163,7 @@ namespace MY_DAL
             tests.Remove(t);
             tests.Add(test);
             testsroot = new XElement("tests");
-            foreach(Test item in tests)
+            foreach (Test item in tests)
             {
                 testsroot.Add(new XElement("test",
                                     new XElement("TesterId", item.TesterId),
@@ -185,18 +182,18 @@ namespace MY_DAL
                                     new XElement("Key", x.Key), new XElement("Value", x.Value))))
                             ));
             }
-            
+
             testsroot.Save(testspath);//run over the existing file
         }
-        public List<MY_BE.Tester> getAllTesters()
+        public List<BE.Tester> getAllTesters()
         {
             return testers;
         }
-        public List<MY_BE.Trainee> getAllTrainees()
+        public List<BE.Trainee> getAllTrainees()
         {
             return trainees;
         }
-        public List<MY_BE.Test> getAllTests()
+        public List<BE.Test> getAllTests()
         {
 
             return tests;

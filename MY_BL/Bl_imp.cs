@@ -1,25 +1,23 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
-using System.IO;
 using System.Xml;
-using System.Text;
-using System.Threading.Tasks;
-using MY_BE;
-using MY_DAL;
-namespace MY_BL
+namespace BL
 {
-    public class Bl_imp:IBL
+    public class Bl_imp : IBL
     {
         Idal d = FactoryDal.GetInstance();//my idal to work with
         public void addTester(Tester tester)
         {
             DateTime today = DateTime.Today;
-            bool canadd=true;
+            bool canadd = true;
             string exception = "";
             int age = today.Year - tester.BirthDate.Year;
-            foreach(Tester item in getAllTesters())
+            foreach (Tester item in getAllTesters())
             {
                 if (tester.id == item.id)
                 {
@@ -27,11 +25,11 @@ namespace MY_BL
                     canadd = false;
                 }
             }
-            if (tester.BirthDate > today.AddYears(-1*age))
+            if (tester.BirthDate > today.AddYears(-1 * age))
             {
                 age--;
             }
-            if(age <= Configuration.MIN_TESTER_AGE)
+            if (age <= Configuration.MIN_TESTER_AGE)
             {
                 canadd = false;
                 exception += "tried to insert tester younger than 40\n";
@@ -55,14 +53,14 @@ namespace MY_BL
                 throw new Exception(exception);
             }
         }
-        public void removeTester(MY_BE.Tester tester)
+        public void removeTester(BE.Tester tester)
         {
             if (tester == null)
             {
                 throw new Exception("tester is null");
             }
             bool tester_exists = false;
-            foreach(Tester item in getAllTesters())
+            foreach (Tester item in getAllTesters())
             {
                 if (item.id == tester.id)
                 {
@@ -78,14 +76,14 @@ namespace MY_BL
                 d.removeTester(tester);
             }
         }
-        public void updateTester(MY_BE.Tester tester)
+        public void updateTester(BE.Tester tester)
         {
             bool tester_exists = false;
             Tester t = new Tester();
             bool canchange = false;
             foreach (Tester item in getAllTesters())
             {
-                
+
                 if (item.id == tester.id)
                 {
                     tester_exists = true;
@@ -108,13 +106,13 @@ namespace MY_BL
                 throw new Exception("can't change birth date & gender");
             }
         }
-        public void addTrainee(MY_BE.Trainee trainee)
+        public void addTrainee(BE.Trainee trainee)
         {
             int traineeBirthYear = trainee.BirthDate.Year;
             bool canaddtrainee = true;
             int currentYear = DateTime.Now.Year;
             string exception = "";
-            foreach(Trainee item in getAllTrainees())
+            foreach (Trainee item in getAllTrainees())
             {
                 if (trainee.id == item.id)
                 {
@@ -136,7 +134,7 @@ namespace MY_BL
                 throw new Exception(exception);
             }
         }
-        public void removeTrainee(MY_BE.Trainee trainee)
+        public void removeTrainee(BE.Trainee trainee)
         {
             bool trainee_exists = false;
             foreach (Trainee item in getAllTrainees())
@@ -144,7 +142,7 @@ namespace MY_BL
                 if (item.id == trainee.id)
                 {
                     trainee_exists = true;
-                    
+
                 }
             }
             if (!trainee_exists)
@@ -156,7 +154,7 @@ namespace MY_BL
                 d.removeTrainee(trainee);
             }
         }
-        public void updateTrainee(MY_BE.Trainee trainee)
+        public void updateTrainee(BE.Trainee trainee)
         {
             bool trainee_exists = false;
             bool canupdate = false;
@@ -169,7 +167,7 @@ namespace MY_BL
                     {
                         canupdate = true;
                     }
-                    
+
                 }
             }
             if (!trainee_exists)
@@ -185,7 +183,7 @@ namespace MY_BL
                 throw new Exception("cant change birth date & gender");
             }
         }
-        public void addTest(MY_BE.Test test)
+        public void addTest(BE.Test test)
         {
             bool canDoTest = true;
             string exception = "";
@@ -196,7 +194,7 @@ namespace MY_BL
                 canDoTest = false;
                 exception += "you cant do a test on the weekend";
             }
-            if(test.TestDate.Hour<9|| test.TestDate.Hour >= 15)
+            if (test.TestDate.Hour < 9 || test.TestDate.Hour >= 15)
             {
                 canDoTest = false;
                 exception += "the testers work between 09:00-15:00 only";
@@ -216,12 +214,12 @@ namespace MY_BL
                         canDoTest = false;
                         exception += "cant set test when you have an upcoming test\n";
                     }//cant set a test when the trainee already have an upcoming test
-                    if (item.TraineeVehicle!=test.TraineeVehicle)
+                    if (item.TraineeVehicle != test.TraineeVehicle)
                     {
                         canDoTest = false;
-                        exception+="The Trainee is tested on other vehicles\n";
+                        exception += "The Trainee is tested on other vehicles\n";
                     }//trainee vehicle is the same as test vehicle
-                     if (item.passedTheTest==true)
+                    if (item.passedTheTest == true)
                     {
                         canDoTest = false;
                         exception += "The Trainee has already passed the test\n";
@@ -229,12 +227,12 @@ namespace MY_BL
                     if ((test.TestDate - item.TestDay).TotalDays <= Configuration.TEST_TO_TEST_TIME_RANGE)
                     {
                         canDoTest = false;
-                        exception+="you need to wait 7 days between tests\n";
+                        exception += "you need to wait 7 days between tests\n";
                     }//a week between the last test and current test
                     if (item.DrivingLessonsNumber < Configuration.MIN_CLASS_NUM)
                     {
                         canDoTest = false;
-                        exception+="atleast 20 lessons required to make a test\n";
+                        exception += "atleast 20 lessons required to make a test\n";
                     }//check if the trainee did less than 20 lessons
                     break;//only one student with matching id in the list
                 }
@@ -242,7 +240,7 @@ namespace MY_BL
             if (newTrainee == null)
             {
                 canDoTest = false;
-                throw new Exception( "trainee does not exist\n");
+                throw new Exception("trainee does not exist\n");
             }
             foreach (var item in getAllTesters())
             {
@@ -258,7 +256,7 @@ namespace MY_BL
                 {
                     continue;
                 }//check if the tester passed the max weekly tests 
-                if (newTrainee.TraineeVehicle!=item.TesterVehicle)
+                if (newTrainee.TraineeVehicle != item.TesterVehicle)
                 {
                     continue;
                 }//check if the tester test on the trainee vehicle
@@ -277,8 +275,8 @@ namespace MY_BL
             }//check if there was an available tester for the test
             if (canDoTest)
             {
-                ++MY_BE.Configuration.TEST_ID;
-                test.TestNumber = (MY_BE.Configuration.TEST_ID).ToString("00000000");
+                ++BE.Configuration.TEST_ID;
+                test.TestNumber = (BE.Configuration.TEST_ID).ToString("00000000");
                 d.addTest(test);
                 newTrainee.TestDay = test.TestDate;
                 newTester.weekdays[test.TestDate.DayOfWeek, test.TestDate.Hour] = false;
@@ -291,26 +289,26 @@ namespace MY_BL
                 throw new Exception(exception);
             }
         }
-        public void updateTestOnFinish(MY_BE.Test test)
+        public void updateTestOnFinish(BE.Test test)
         {
 
             if (test.TestDate >= DateTime.Now)
             {
                 throw new Exception("the test wasnt conducted yet");
             }//you cant update test before it started
-            if (getAllTests().Where(x=>x.TestNumber==test.TestNumber&&x.TestParams["distance"] == 0)==null)
+            if (getAllTests().Where(x => x.TestNumber == test.TestNumber && x.TestParams["distance"] == 0) == null)
             {
                 throw new Exception("test already checked!");
             }//check that the test wasn't checked
-            if(getAllTrainees().Where(x => x.id == test.TraineeId).First().passedTheTest == true)
+            if (getAllTrainees().Where(x => x.id == test.TraineeId).First().passedTheTest == true)
             {
                 throw new Exception("Trainee already passed the test!");
             }//check if trainee already passed the test
             bool canupdatetest = true;
-            string myException="";
+            string myException = "";
             bool testpassed = true;
             int sum = 0;
-            
+
             foreach (var item in test.TestParams)
             {
                 if (item.Value == 0)
@@ -326,14 +324,14 @@ namespace MY_BL
             }//if the trainee didnt stop in red light/stop sign, he can't pass the test.
             else
             {
-                foreach(var item in test.BoolTestParams)
+                foreach (var item in test.BoolTestParams)
                 {
                     if (item.Value == true)
                     {
                         sum += 10;
                     }
                 }
-                foreach(var item in test.TestParams)
+                foreach (var item in test.TestParams)
                 {
                     sum += (int)item.Value;
                 }
@@ -358,24 +356,24 @@ namespace MY_BL
                 d.updateTrainee(trainee);
             }
         }//update the test and check if the trainee passed
-        public List<MY_BE.Tester> getAllTesters()
+        public List<BE.Tester> getAllTesters()
         {
             return d.getAllTesters();
         }
-        public List<MY_BE.Trainee> getAllTrainees()
+        public List<BE.Trainee> getAllTrainees()
         {
             return d.getAllTrainees();
         }
-        public List<MY_BE.Test> getAllTests()
+        public List<BE.Test> getAllTests()
         {
             return d.getAllTests();
         }
         public List<Tester> getNearbyTesters(Adress ad)
         {
             List<Tester> tlist = new List<Tester>();
-            double x=1000;
-            
-                foreach (Tester t in getAllTesters())
+            double x = 1000;
+
+            foreach (Tester t in getAllTesters())
             {
                 //enter gmaps distance to distance
                 if (x <= t.MaxDistance)
@@ -385,9 +383,9 @@ namespace MY_BL
             }
             return tlist;
         }
-        public double getDistance(Adress adress1,Adress adress2)
+        public double getDistance(Adress adress1, Adress adress2)
         {
-            double distancInKm=10000;
+            double distancInKm = 10000;
             string origin = adress1.ToString(); //or " אחד העם  פתח תקווה 100 " etc. 
             string destination = adress2.ToString();//or " ז'בוטינסקי  רמת גן 10 " etc. 
             origin = "pisga 45 st. jerusalem"; //or " אחד העם  פתח תקווה 100 " etc. 
@@ -434,7 +432,7 @@ namespace MY_BL
             }
             return tlist;
         }
-        public List<Test> testsCheck(Func<Test,bool> func)
+        public List<Test> testsCheck(Func<Test, bool> func)
         {
             List<Test> tlist = new List<Test>();
             var testWithCondition = from item in getAllTests()
@@ -445,7 +443,7 @@ namespace MY_BL
         public int numOfTests(Trainee trainee)
         {
             int sum = 0;
-            foreach(Test item in getAllTests())
+            foreach (Test item in getAllTests())
             {
                 if (item.TraineeId == trainee.id)
                 {
@@ -460,7 +458,7 @@ namespace MY_BL
         }
         public List<Test> testsOnDate(DateTime dt)
         {
-            List < Test > tlist= new List<Test>();
+            List<Test> tlist = new List<Test>();
 
             var results = from item in getAllTests()
                           where (dt.Month == item.TestDate.Month && dt.Day == item.TestDate.Day)
@@ -478,10 +476,10 @@ namespace MY_BL
             /*var results2 = from item in getAllTests()
                           group item by item.TraineeVehicle;
             */
-            foreach (IGrouping<VehicleType,Tester> group in results)
+            foreach (IGrouping<VehicleType, Tester> group in results)
             {
                 //tlist.AddRange(group);
-                foreach(Tester item in group)
+                foreach (Tester item in group)
                 {
                     tlist.Add(item);
                 }
@@ -492,9 +490,9 @@ namespace MY_BL
         {
             List<Trainee> tlist = new List<Trainee>();
             var results = getAllTrainees().GroupBy(item => item.DrivingSchool);
-            foreach(IGrouping<string,Trainee> group in results)
+            foreach (IGrouping<string, Trainee> group in results)
             {
-                foreach(Trainee item in group)
+                foreach (Trainee item in group)
                 {
                     tlist.Add(item);
                 }

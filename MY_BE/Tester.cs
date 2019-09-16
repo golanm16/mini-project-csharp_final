@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
-namespace MY_BE
+namespace BE
 {
     /*public class Day
     {
@@ -47,10 +42,10 @@ namespace MY_BE
         public Schedule()
         {
             week = new bool[5][];
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 week[i] = new bool[6];
-                for(int j = 0; j < 6; j++)
+                for (int j = 0; j < 6; j++)
                 {
                     week[i][j] = true;
                 }
@@ -66,11 +61,11 @@ namespace MY_BE
         {
             get
             {
-                return week[(int)dof][ h - 9];
+                return week[(int)dof][h - 9];
             }
             set
             {
-                week[(int)dof][ h - 9]=value;
+                week[(int)dof][h - 9] = value;
             }
         }
         /*public IEnumerator<bool> GetEnumerator()
@@ -84,9 +79,9 @@ namespace MY_BE
                 }
             }
         }*/
-        
+
     }
-        public class Tester
+    public class Tester
     {
         public Tester()
         {

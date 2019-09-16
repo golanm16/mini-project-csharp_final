@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MY_BE
+﻿namespace BE
 {
     public class Adress
     {
@@ -14,7 +8,7 @@ namespace MY_BE
             Street = "Ha-Va'ad ha-Le'umi";
             HouseNumber = 21;
         }
-        public Adress(string city= "Jerusalem", string street = "Ha-Va'ad ha-Le'umi", int housenumber = 21)
+        public Adress(string city = "Jerusalem", string street = "Ha-Va'ad ha-Le'umi", int housenumber = 21)
         {
             City = city;
             Street = street;

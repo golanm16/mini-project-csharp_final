@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using BE;
+using BL;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MY_BL;
-using MY_BE;
 namespace PLWPF
 {
     /// <summary>
@@ -27,7 +16,7 @@ namespace PLWPF
             InitializeComponent();
             Closing += On_Closed;
             tests_list.ItemsSource = bl.getAllTests();
-        }       
+        }
         private void On_Closed(Object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -53,7 +42,7 @@ namespace PLWPF
         }//call the add test window
         private void add_tests(object sender, MouseButtonEventArgs e)
         {
-             tests_list.ItemsSource = bl.getAllTests();
+            tests_list.ItemsSource = bl.getAllTests();
         }//refreshing the tab
         private void add_trainees(object sender, MouseButtonEventArgs e)
         {

@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BE;
+using BL;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MY_BL;
-using MY_BE;
 
 namespace PLWPF
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,7 +20,7 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(AdminUsername.Text=="admin"&& AdminPassword.Password == "admin")
+            if (AdminUsername.Text == "admin" && AdminPassword.Password == "admin")
             {
                 Administrator admin = new Administrator();
                 admin.Show();
@@ -59,7 +47,7 @@ namespace PLWPF
             }
             else
             {
-                MessageBox.Show("must enter number in tester id!","ERROR!");
+                MessageBox.Show("must enter number in tester id!", "ERROR!");
             }
         }//tester signin window
 
@@ -92,7 +80,7 @@ namespace PLWPF
             {
                 testerClick(this, new RoutedEventArgs());
             }
-            
+
         }
 
         private void traineeid_EnterButton(object sender, KeyEventArgs e)
