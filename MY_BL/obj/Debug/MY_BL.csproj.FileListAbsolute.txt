@@ -50,3 +50,5 @@ C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\M
 C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.csproj.CopyComplete
 C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.dll
 C:\Users\Golan\Source\Repos\golanm16\mini-project-csharp_final\MY_BL\obj\Debug\MY_BL.pdb
+C:\Users\Golan\source\repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\DS.dll
+C:\Users\Golan\source\repos\golanm16\mini-project-csharp_final\MY_BL\bin\Debug\DS.pdb

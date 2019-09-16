@@ -44,7 +44,6 @@
     <Compile Include="Adress.cs" />
     <Compile Include="CodeFile1.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="MY_BE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Tester.cs" />
